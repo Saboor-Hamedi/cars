@@ -12,7 +12,6 @@
                                 </div>
                             </div>
                         @endforeach
-                    {{-- {{dd($cars->links())}} --}}
                     <div class="pagination-wrapper">
                         <span class="font-medium">{{ $cars->links('vendor.pagination.tailwind') }}</span>
                     </div>

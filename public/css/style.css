@@ -1,0 +1,130 @@
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #f3f4f6;
+    color: white;
+    padding: 15px;
+    width: 15rem;
+    height: 100vh;
+   transition: transform 0.3s ease, visibility 0.3s ease;
+    overflow-y: auto;
+    z-index: 1;
+}
+.hidden {
+  display: none;
+}
+#sidebar-open {
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.openSidebar {
+    cursor: pointer;
+}
+
+.openSidebar li {
+    list-style: none;
+    margin-top: 1.3rem;
+}
+
+.close-sidebar {
+    background-color: rgb(123, 123, 129);
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: end;
+    cursor: pointer;
+}
+
+#sidebar-closed {
+    transform: translateX(-100%);
+}
+
+#sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#sidebar ul li {
+    margin: 10px 0;
+}
+
+#sidebar ul li a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+    display: flex;
+    /* Flexbox for horizontal alignment */
+    align-items: center;
+    /* Vertically center the items */
+    gap: 8px;
+    /* Space between the SVG icon and text */
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+#sidebar ul li a:hover {
+    background-color: hsl(240, 29%, 62%);
+    color: white;
+}
+
+.sidebar {
+    transition: transform 0.3s ease;
+}
+
+.dashboard-main {
+    transition: margin-left 0.3s ease;
+}
+
+.dashboard-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    padding: 5px;
+
+}
+
+.dashboard-logo .dashboard-logo-name {
+    padding: 5px;
+}
+
+.dashboard-logo-name:hover {
+    cursor: pointer;
+    background-color: black;
+    border-radius: 5px;
+    color: white;
+
+}
+
+.dashboard-logo-name {
+    margin-right: 16px;
+    /* Adjust margin as needed */
+}
+
+.openSidebar .nav-link {
+    list-style: none;
+}
+
+.size-6 {
+    width: 24px;
+    height: 24px;
+}
+
+
+@media only screen and (max-width: 786px) {
+    #sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 15rem;
+        height: 100vh;
+    }
+
+    .dashboard-main {
+        margin-left: 0;
+    }
+}
