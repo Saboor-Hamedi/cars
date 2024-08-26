@@ -21,22 +21,21 @@ new class extends Component {
         <div class="flex h-16">
             <div class="flex items-center w-full p-4 ">
                 <!-- Logo -->
-                <div class="flex items-center shrink-0">
+                {{-- <div class="flex items-center shrink-0">
                     <a href="{{ route('dashboard') }}" wire:navigate>
                         <x-application-logo class="block w-auto text-gray-800 fill-current h-9" />
                     </a>
-                </div>
+                </div> --}}
 
                 <div class="flex items-center mr-5 dashboard-logo">
                     <!-- Navigation Links -->
                     <div class="dashboard-logo-name">
-                       
+
                         <a href="{{ route('dashboard') }}" wire:navigate>{{ __('Dashboard') }}</a>
                     </div>
                     <!-- Sidebar Button -->
-                    <div class=" openSidebar">
-                        <button id="sidebar-open" onclick="openSidebar()"
-                            class="inline-flex items-center justify-center px-2 py-1 text-sm font-medium text-black transition duration-150 ease-in-out bg-white border border-gray-300 rounded-2xl hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 ">
+                    <div class="openSidebar">
+                        <button id="sidebar-open" onclick="openSidebar()" class="default-button">
                             <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                 <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
                                     stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

@@ -12,7 +12,7 @@ class Content extends Component
 
     public function render()
     {
-        $cars = Car::with('user')->latest()->paginate(5);
+        $cars = Car::with('user')->orderBy('created_at', 'desc')->paginate(3);
         return view('livewire.dashboard.content', ['cars' => $cars]);
     }
 }

@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="stylesheet" href="{{ asset('css/cards.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    @vite('resources/css/app.css')
     @livewireStyles
+    @vite('resources/css/app.css')
 </head>
 
 <body>
@@ -34,8 +35,8 @@
     </main>
 
     <script src="{{ asset('js/sidebar.js') }}"></script>
-    @vite('resources/js/app.js')
     @livewireScripts
+    @vite('resources/js/app.js')
 </body>
 
 </html>

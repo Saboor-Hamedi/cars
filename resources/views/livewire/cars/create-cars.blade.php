@@ -4,15 +4,18 @@
             {{ __('Home') }}
         </h2>
     </x-slot>
-  
-    
-    <div class="py-12">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    @livewire('cars.forms')
-                </div>
+    <div class="px-4 py-4 mx-auto">
+        <div class="max-w-md mx-auto overflow-hidden bg-white shadow-sm sm:rounded-lg">
+            <div class="p-4 text-gray-900">
+                {{-- @if (session()->has('message'))
+                    <div class="relative px-4 py-3 text-red-700 bg-red-100 border border-red-400 rounded" role="alert">
+                        {{ session('message') }}
+                    </div>
+                @endif --}}
+                @livewire('cars.store')
+                
             </div>
         </div>
     </div>
+
 </div>

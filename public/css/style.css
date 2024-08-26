@@ -7,13 +7,15 @@
     padding: 15px;
     width: 15rem;
     height: 100vh;
-   transition: transform 0.3s ease, visibility 0.3s ease;
+    transition: transform 0.3s ease, visibility 0.3s ease;
     overflow-y: auto;
     z-index: 1;
 }
+
 .hidden {
-  display: none;
+    display: none;
 }
+
 #sidebar-open {
     margin-top: 5px;
     border-radius: 5px;
@@ -27,16 +29,27 @@
     list-style: none;
     margin-top: 1.3rem;
 }
-
+input, textarea{
+    /* outline:none; */
+}
 .close-sidebar {
-    background-color: rgb(123, 123, 129);
-    border-radius: 10px;
-    padding: 10px;
     display: flex;
     justify-content: end;
     cursor: pointer;
+     font-size: 12px;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.6s ease-in-out;
 }
-
+.close-sidebar:hover {
+    cursor: pointer;
+    background-color: rgb(104, 98, 98);
+    color: white;
+}
 #sidebar-closed {
     transform: translateX(-100%);
 }
@@ -85,24 +98,42 @@
     margin-bottom: 5px;
     margin-left: 10px;
     padding: 5px;
+}
 
+.default-button {
+    font-size: 12px;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.6s ease-in-out;
+}
+
+.default-button:hover {
+    cursor: pointer;
+    background-color: rgb(104, 98, 98);
+    color: white;
 }
 
 .dashboard-logo .dashboard-logo-name {
-    padding: 5px;
+    font-size: 12px;
+    padding: 7px;
+    margin-top: 5px;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.6s ease-in-out;
 }
 
 .dashboard-logo-name:hover {
     cursor: pointer;
-    background-color: black;
-    border-radius: 5px;
+    background-color: rgb(104, 98, 98);
     color: white;
-
 }
 
 .dashboard-logo-name {
     margin-right: 16px;
-    /* Adjust margin as needed */
 }
 
 .openSidebar .nav-link {

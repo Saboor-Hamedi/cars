@@ -1,30 +1,26 @@
 <div>
-    <div class="py-12">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    <div>
-                        <div class="flex flex-wrap justify-center mb-4">
-                            @foreach ($cars as $car)
-                                <div class="w-full p-4 xl:w-1/5 lg:w-1/4 md:w-1/2 sm:w-full">
-                                    <div class="p-4 transition duration-300 bg-white rounded shadow-md hover:shadow-lg">
-                                        <h5 class="mb-2 text-lg font-bold">{{ $car->year }}</h5>
-                                        <p class="text-gray-600 ">Owned by: {{ $car->user->name }}</p>
-                                        <small
-                                            class="inline-flex items-center px-2 py-1 mt-2 text-xs font-medium text-pink-700 rounded-md cursor-pointer hover:bg-blue-500 bg-pink-50 ring-1 ring-inset ring-pink-700/10">
-                                            {{ $car->created_at->diffForHumans() }}
-                                        </small>
-                                    </div>
-                                </div>
-                            @endforeach
-                            {{-- {{dd($cars->links())}} --}}
-                            <div class="pagination-wrapper">
-                                <span class="font-medium">{{ $cars->links('vendor.pagination.tailwind') }}</span>
-                            </div>
-                        </div>
-                    </div>
+    <div class="custom-container">
+        @foreach ($cars as $car)
+            <div class="card">
+                <div class="card-icon" style="background-color: #00BCD4;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                        <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                    </svg>
                 </div>
+                <h2 class="card-title">{!! $car->name !!}</h2>
+                <p class="card-description">
+                    <span class="font-bold">Year:</span> {{ $car->year }}<br>
+                    <span class="font-bold">Date</span> {{ $car->created_at->format('Y-m-d') }}<br>
+                    <span class="font-bold">User:</span> {!! Str::ucfirst($car->user->name)!!}<br>
+                    <span class="font-bold">Description:</span> {!! Str::limit($car->description, 30, '...')!!}
+                </p>
             </div>
-        </div>
+        @endforeach
+    </div>
+    <div class="flex justify-center mt-6 pagination-wrapper">
+        <span class="font-medium">{{ $cars->links('vendor.pagination.tailwind') }}</span>
     </div>
 </div>

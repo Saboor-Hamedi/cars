@@ -13,7 +13,7 @@ class FrontContent extends Component
 
         $cars = Car::with('user')
             ->latest()
-            ->paginate(5);
+            ->paginate(3);
         return view('livewire.front-content', ['cars' => $cars]);
     }
 }

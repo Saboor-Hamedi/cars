@@ -11,8 +11,8 @@ class Car extends Model
 {
     use HasFactory;
     use Notifiable;
-    protected $guarded = ['id'];
-
+    protected $fillable = ['user_id', 'name', 'color', 'year', 'description'];
+    // protected $guarded = ['id'];
 
     public function user(): BelongsTo
     {

@@ -12,12 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('cars', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained();
+            // $table->foreignId('user_id')->constrained();
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
             $table->string('name');
-            $table->string('color');
-            $table->integer('year');
+            $table->string('color');  // Limit to 5 characters
+            $table->string('year');   // Limit to 4 characters
             $table->string('description');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
