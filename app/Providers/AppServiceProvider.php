@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useTailwind();
-        // Livewire::component('logout', Logout::class);
-        // Blade::component('app-layout', \App\View\Components\AppLayout::class);
+        Livewire::component('logout', Logout::class);
+        Blade::component('app-layout', \App\View\Components\AppLayout::class);
     }
 }

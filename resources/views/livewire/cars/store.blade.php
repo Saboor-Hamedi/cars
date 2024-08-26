@@ -29,7 +29,7 @@
             <x-input-error :messages="$errors->get('description')" />
         </div>
 
-            <button type="submit" class="px-3 py-1 text-white bg-black rounded-md hover:bg-purple-900">
+            <button type="submit" class="default-button">
                 Register
             </button>
 

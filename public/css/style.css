@@ -1,8 +1,8 @@
 #sidebar {
+    background-color: #f3f4f6;
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #f3f4f6;
     color: white;
     padding: 15px;
     width: 15rem;
@@ -29,14 +29,17 @@
     list-style: none;
     margin-top: 1.3rem;
 }
-input, textarea{
-    /* outline:none; */
+
+input,
+textarea {
+    outline: none;
 }
+
 .close-sidebar {
     display: flex;
     justify-content: end;
     cursor: pointer;
-     font-size: 12px;
+    font-size: 12px;
     padding: 5px;
     margin-top: 5px;
     border-radius: 5px;
@@ -45,11 +48,13 @@ input, textarea{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: background-color 0.6s ease-in-out;
 }
+
 .close-sidebar:hover {
     cursor: pointer;
     background-color: rgb(104, 98, 98);
     color: white;
 }
+
 #sidebar-closed {
     transform: translateX(-100%);
 }
@@ -69,11 +74,8 @@ input, textarea{
     color: #000000;
     font-weight: bold;
     display: flex;
-    /* Flexbox for horizontal alignment */
     align-items: center;
-    /* Vertically center the items */
     gap: 8px;
-    /* Space between the SVG icon and text */
     padding: 10px;
     border-radius: 4px;
     transition: background-color 0.3s ease;
@@ -98,6 +100,18 @@ input, textarea{
     margin-bottom: 5px;
     margin-left: 10px;
     padding: 5px;
+}
+.cars-color{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.inner-car-color {
+    margin-left: 10px;
+    margin-top: 5px;
+    height: 20px;
+    width: 20px;
+    border-radius: 100%;
 }
 
 .default-button {

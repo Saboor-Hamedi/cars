@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <link rel="stylesheet" href="{{ asset('css/cards.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    @livewireStyles
+    <link rel="stylesheet" href="{{ asset('css/cards.css') }}">
     @vite('resources/css/app.css')
+    @livewireStyles
 </head>
 
 <body>
@@ -33,10 +35,13 @@
 
         </div>
     </main>
-
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        flatpickr("#birthday");
+    </script>
     <script src="{{ asset('js/sidebar.js') }}"></script>
-    @livewireScripts
     @vite('resources/js/app.js')
+    @livewireScripts
 </body>
 
 </html>

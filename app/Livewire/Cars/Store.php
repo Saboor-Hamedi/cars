@@ -2,10 +2,7 @@
 
 namespace App\Livewire\Cars;
 
-use App\Models\Car;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use Livewire\Form;
 
 class Store extends Component
 {
@@ -21,8 +18,8 @@ class Store extends Component
 
     protected $rules = [
         'name' => 'required|min:3|max:50',
-        'color' => 'required|min:3|max:50',
-        'year' => 'required|min:3|max:50',
+        'color' => 'required|size:6', // Ensures the color has exactly 5 characters
+        'year' => 'required|digits:4|integer|min:1900',
         'description' => 'required|min:3|max:1000',
     ];
     public function store()

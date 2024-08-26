@@ -12,7 +12,16 @@
                 </div>
                 <h2 class="card-title">{!! $car->name !!}</h2>
                 <p class="card-description">
+                @php
+                    $color = $car->color;
+                    if(strpos($color, '#') !==0){
+                        $color = '#' .$color;
+                    }
+                @endphp
                     <span class="font-bold">Year:</span> {{ $car->year }}<br>
+                    <div class="cars-color"> Color: 
+                        <span style="background-color: {{ $car->color }}; " class="inner-car-color"></span>
+                    </div>
                     <span class="font-bold">Date</span> {{ $car->created_at->format('Y-m-d') }}<br>
                     <span class="font-bold">User:</span> {!! Str::ucfirst($car->user->name)!!}<br>
                     <span class="font-bold">Description:</span> {!! Str::limit($car->description, 30, '...')!!}

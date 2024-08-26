@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Car;
+use App\Models\Profile;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -26,6 +27,15 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
 
         ]);
+        User::factory()->create([
+            'name' => 'guest',
+            'email' => 'guest@gmail.com',
+            'email_verified_at' => now(),
+            'password' => static::$password ??= Hash::make('123'),
+            'remember_token' => Str::random(10),
+
+        ]);
         Car::factory(100)->create();
+        Profile::factory(1)->create();
     }
 }
