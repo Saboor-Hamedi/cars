@@ -30,8 +30,7 @@ new class extends Component {
                 <div class="flex items-center mr-5 dashboard-logo">
                     <!-- Navigation Links -->
                     <div class="dashboard-logo-name">
-
-                        <a href="{{ route('dashboard') }}" wire:navigate>{{ __('Dashboard') }}</a>
+                        <a wire:navigate href="{{ route('dashboard') }}" >{{ __('Dashboard') }}</a>
                     </div>
                     <!-- Sidebar Button -->
                     <div class="openSidebar">
@@ -71,7 +70,7 @@ new class extends Component {
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('profile')" wire:navigate>
+                        <x-dropdown-link wire:navigate :href="route('profile')" >
                             {{ __('Profile') }}
                         </x-dropdown-link>
 

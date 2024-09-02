@@ -8,7 +8,8 @@
     <title>{{ $title ?? 'Welcome' }}</title>
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/cards.css')}}">
-    @vite('resources/css/app.css')
+    {{-- @vite('resources/css/app.css') --}}
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
     
 </head>
@@ -16,7 +17,7 @@
     <main class="main">
         {{ $slot }}
     </main>
-    @vite('resources/js/app.js')
+    {{-- @vite('resources/js/app.js') --}}
     @livewireScripts
 </body>
 

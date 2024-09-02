@@ -12,7 +12,7 @@
     z-index: 1;
 }
 
-.hidden {
+.sidebar {
     display: none;
 }
 
@@ -159,7 +159,16 @@ textarea {
     height: 24px;
 }
 
-
+/* on store.blade.php */
+.colorPickerInput{
+    padding: 5px;
+    width: 100%;
+    border: 1.5px solid #d1d5db;
+    border-radius: 5px;
+}
+.colorPickerInput:focus{
+     border: 2px solid blue;
+}
 @media only screen and (max-width: 786px) {
     #sidebar {
         position: fixed;
@@ -173,3 +182,6 @@ textarea {
         margin-left: 0;
     }
 }
+
+
+

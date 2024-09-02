@@ -48,6 +48,15 @@
             "@php artisan key:generate --ansi",
             "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
             "@php artisan migrate --graceful --ansi"
+        ],
+        
+         "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan vendor:publish --tag=livewire:assets --ansi --force",
+            "cp vendor/livewire/livewire/dist/livewire.js public/assets/livewire/livewire.js",
+            "cp vendor/livewire/livewire/dist/livewire.min.js public/assets/livewire/livewire.min.js",
+            "cp vendor/livewire/livewire/dist/livewire.esm.js public/assets/livewire/livewire.esm.js",
+            "cp vendor/livewire/livewire/dist/manifest.json public/assets/livewire/manifest.json"
         ]
     },
     "extra": {

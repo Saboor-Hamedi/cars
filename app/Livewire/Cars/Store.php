@@ -18,7 +18,7 @@ class Store extends Component
 
     protected $rules = [
         'name' => 'required|min:3|max:50',
-        'color' => 'required|size:6', // Ensures the color has exactly 5 characters
+        'color' => 'required|max:8',
         'year' => 'required|digits:4|integer|min:1900',
         'description' => 'required|min:3|max:1000',
     ];

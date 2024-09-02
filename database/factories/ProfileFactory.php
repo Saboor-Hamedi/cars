@@ -19,7 +19,7 @@ class ProfileFactory extends Factory
         return [
             'user_id' => 1,
             'lastname' => $this->faker->lastname,
-            'birthday' => $this->faker->date('Y m d'),
+            'birthday' => $this->faker->date('Y-m-d'),
         ];
     }
 }
