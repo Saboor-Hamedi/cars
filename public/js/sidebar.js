@@ -1,4 +1,3 @@
-// resources/js/app.js
 function openSidebar() {
   const sidebar = document.getElementById('sidebar');
   const sidebarOpen = document.getElementById('sidebar-open');
@@ -22,7 +21,8 @@ function closeSidebar() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('livewire:navigated', function () {
   window.closeSidebar = closeSidebar;
   window.openSidebar = openSidebar;
 });
+

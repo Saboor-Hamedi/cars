@@ -1,7 +1,6 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('livewire:navigated', function () {
     const colorPicker = document.getElementById("nativeColorPicker1");
     const changeColorBtn = document.getElementById("color");
-
     if (colorPicker && changeColorBtn) {
         function handColorChange() {
             changeColorBtn.value = '';

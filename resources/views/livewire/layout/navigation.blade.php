@@ -21,28 +21,25 @@ new class extends Component {
         <div class="flex h-16">
             <div class="flex items-center w-full p-4 ">
                 <!-- Logo -->
-                {{-- <div class="flex items-center shrink-0">
-                    <a href="{{ route('dashboard') }}" wire:navigate>
-                        <x-application-logo class="block w-auto text-gray-800 fill-current h-9" />
-                    </a>
-                </div> --}}
 
                 <div class="flex items-center mr-5 dashboard-logo">
                     <!-- Navigation Links -->
                     <div class="dashboard-logo-name">
-                        <a wire:navigate href="{{ route('dashboard') }}" >{{ __('Dashboard') }}</a>
+                        <a wire:navigate href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
                     </div>
+                    {{-- <div class="dashboard-logo-name">
+                        <a wire:navigate href="{{ route('users.profile') }}">{{ __('Profile') }}</a>
+                    </div> --}}
+
                     <!-- Sidebar Button -->
                     <div class="openSidebar">
                         <button id="sidebar-open" onclick="openSidebar()" class="default-button">
-                            <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                                <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
-                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4 6h16M4 12h16M4 18h16" />
-                                <path :class="{ 'hidden': !open, 'inline-flex': open }" class="hidden"
-                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M6 18L18 6M6 6l12 12" />
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
                             </svg>
+
                         </button>
                     </div>
                 </div>
@@ -59,6 +56,7 @@ new class extends Component {
                                 x-on:profile-updated.window="name = $event.detail.name"></div>
 
                             <div class="ms-1">
+
                                 <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
@@ -70,7 +68,7 @@ new class extends Component {
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link wire:navigate :href="route('profile')" >
+                        <x-dropdown-link wire:navigate :href="route('profile')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
@@ -86,8 +84,7 @@ new class extends Component {
 
             <!-- Hamburger -->
             <div class="flex items-center -me-2 sm:hidden">
-                <button @click="open = ! open"
-                    class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
+                <button @click="open = ! open" class="default-button">
                     <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -95,6 +92,7 @@ new class extends Component {
                         <path :class="{ 'hidden': !open, 'inline-flex': open }" class="hidden" stroke-linecap="round"
                             stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
+
                 </button>
             </div>
         </div>
