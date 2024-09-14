@@ -5,7 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 
 class Car extends Model
 {
@@ -18,4 +21,20 @@ class Car extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function votes(): BelongsToMany
+    {
+        return $this->belongsToMany(related: User::class, table: 'votes')
+            ->withPivot('vote')
+            ->withTimestamps();
+    }
+
+    public function updateVoteState(): bool
+    {
+        $user = Auth::user();
+
+        return $user ? $user->votes()->where('car_id', $this->id)->exists() : false;
+    }
+
+
 }

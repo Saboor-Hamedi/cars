@@ -4,8 +4,6 @@
             {{ __('Home') }}
         </h2>
     </x-slot>
-  
-    
     <div class="py-2">
         <div class="mx-auto">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">

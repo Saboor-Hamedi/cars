@@ -2,11 +2,11 @@
     <div class="custom-container">
         @foreach ($cars as $car)
             <div class="card">
-                 <div class="transition-colors duration-300 border-2 border-blue-600 card-icon hover:cursor-pointer hover:border-red-400">
+                <div
+                    class="transition-colors duration-300 border-2 border-blue-600 card-icon hover:cursor-pointer hover:border-red-400">
                     @if ($car->user->profile && $car->user->profile->photo)
                         <div class="flex justify-start">
-                            <img id="image-preview"
-                                src="{{ asset('storage/' . $car->user->profile->photo) }}"
+                            <img id="image-preview" src="{{ asset('storage/' . $car->user->profile->photo) }}"
                                 alt="{{ $car->name }} image" class="object-fill custom-circle-image">
                         </div>
                     @else
@@ -19,7 +19,7 @@
                     @endif
                 </div>
                 <h2 class="card-title">{!! $car->name !!}</h2>
-                <p class="card-description">
+                <div class="card-description">
                     @php
                         $color = $car->color;
                         if (strpos($color, '#') !== 0) {
@@ -27,13 +27,14 @@
                         }
                     @endphp
                     <span class="font-bold">Year:</span> {{ $car->year }}<br>
-                <div class="cars-color"> Color:
-                    <span style="background-color: {{ $car->color }}; " class="inner-car-color"></span>
+                    <div class="cars-color"> Color:
+                        <span style="background-color: {{ $car->color }} " class="inner-car-color"></span>
+                    </div>
+                    <span class="font-bold">Date</span> {{ $car->created_at->format('Y-m-d') }}<br>
+                    <span class="font-bold">User:</span> {!! Str::ucfirst($car->user->name) !!}<br>
+                    <span class="font-bold">Description:</span> {!! Str::limit($car->description, 30, '...') !!}
+                    @livewire('vote.vote', ['car' => $car])
                 </div>
-                <span class="font-bold">Date</span> {{ $car->created_at->format('Y-m-d') }}<br>
-                <span class="font-bold">User:</span> {!! Str::ucfirst($car->user->name) !!}<br>
-                <span class="font-bold">Description:</span> {!! Str::limit($car->description, 30, '...') !!}
-                </p>
             </div>
         @endforeach
     </div>

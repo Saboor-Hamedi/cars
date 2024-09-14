@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:title>
-        Home
+       {{ __('Home') }}
     </x-slot>
     @livewire('header')
      <div class="py-2">

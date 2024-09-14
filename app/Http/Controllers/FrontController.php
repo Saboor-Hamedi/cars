@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Car;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -33,9 +34,12 @@ class FrontController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Car $car)
     {
-        //
+        $latest = Car::with(['user.profile'])
+            ->latest()
+            ->paginate(3);
+        return view('livewire.users.show-profile', ['car' => $car, 'latest' => $latest]);
     }
 
     /**

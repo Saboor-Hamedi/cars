@@ -18,8 +18,13 @@
                         </svg>
                     @endif
                 </div>
-                <h2 class="card-title">{!! $car->name !!}</h2>
-                <p class="card-description">
+                <h2 class="card-title">
+                    <a href="{{ route('show-profile', ['car' => $car->id]) }}">
+                        {!! $car->name !!}
+                    </a>
+
+                </h2>
+                <div class="card-description">
                     @php
                         $color = $car->color;
                         if (strpos($color, '#') !== 0) {
@@ -27,13 +32,14 @@
                         }
                     @endphp
                     <span class="font-bold">Year:</span> {{ $car->year }}<br>
-                <div class="cars-color"> Color:
-                    <span style="background-color: {{ $car->color }}; " class="inner-car-color"></span>
+                    <div class="cars-color"> Color:
+                        <span style="background-color: {{ $car->color }}; " class="inner-car-color"></span>
+                    </div>
+                    <span class="font-bold">Date</span> {{ $car->created_at->format('Y-m-d') }}<br>
+                    <span class="font-bold">User:</span> {!! Str::ucfirst($car->user->name) !!}<br>
+                    <span class="font-bold">Description:</span> {!! Str::limit($car->description, 30, '...') !!}
+                    @livewire('vote.vote', ['car' => $car])
                 </div>
-                <span class="font-bold">Date</span> {{ $car->created_at->format('Y-m-d') }}<br>
-                <span class="font-bold">User:</span> {!! Str::ucfirst($car->user->name) !!}<br>
-                <span class="font-bold">Description:</span> {!! Str::limit($car->description, 30, '...') !!}
-                </p>
             </div>
         @endforeach
     </div>

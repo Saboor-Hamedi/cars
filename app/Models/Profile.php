@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Profile extends Model
 {
@@ -21,7 +20,7 @@ class Profile extends Model
     // check if profile is updated
     public function isModified(array $data)
     {
-        foreach ($data as $key =>  $value) {
+        foreach ($data as $key => $value) {
             if ($this->{$key} != $value) {
                 return true;
             }

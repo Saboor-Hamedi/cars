@@ -14,23 +14,17 @@ new class extends Component {
         $this->redirect('/', navigate: true);
     }
 }; ?>
-
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="flex h-16">
             <div class="flex items-center w-full p-4 ">
                 <!-- Logo -->
-
                 <div class="flex items-center mr-5 dashboard-logo">
                     <!-- Navigation Links -->
                     <div class="dashboard-logo-name">
-                        <a wire:navigate href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
+                        <a wire:navigate href="{{ route('welcome') }}">{{ __('Home') }}</a>
                     </div>
-                    {{-- <div class="dashboard-logo-name">
-                        <a wire:navigate href="{{ route('users.profile') }}">{{ __('Profile') }}</a>
-                    </div> --}}
-
                     <!-- Sidebar Button -->
                     <div class="openSidebar">
                         <button id="sidebar-open" onclick="openSidebar()" class="default-button">
@@ -39,13 +33,11 @@ new class extends Component {
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
                             </svg>
-
                         </button>
                     </div>
                 </div>
 
             </div>
-
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
