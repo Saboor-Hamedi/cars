@@ -7,7 +7,6 @@
 
 .card {
     /* background-color: #111; */
-    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     flex: 1;
@@ -37,10 +36,30 @@
     margin-bottom: 10px;
 }
 
-.card-description {
-    font-size: 14px;
-    line-height: 1.5;
+/* vote footer */
+.vote-card {
+    background-color: #b6adad30;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
 }
+
+.vote-button {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex: 1;
+}
+
+.vote-error {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex: 1;
+    margin-right: 10px;
+}
+
 
 @media (max-width: 768px) {
     .custom-container {
