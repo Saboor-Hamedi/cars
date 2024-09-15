@@ -4,10 +4,7 @@
             <div class="card">
                 <div class="p-2">
                     <div
-                        class="transition-colors duration-300 border-2
-                     border-blue-600 card-icon hover:cursor-pointer
-                      hover:border-red-400
-                      py-2">
+                        class="py-2 transition-colors duration-300 border-2 border-blue-600 card-icon hover:cursor-pointer hover:border-red-400">
                         @if ($car->user->profile && $car->user->profile->photo)
                             <div class="flex justify-start">
                                 <img id="image-preview" src="{{ asset('storage/' . $car->user->profile->photo) }}"
