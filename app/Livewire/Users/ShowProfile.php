@@ -15,6 +15,9 @@ class ShowProfile extends Component
     }
     public function render()
     {
-        return view('livewire.users.show-profile');
+        $latest = Car::with(['user.profile'])
+            ->latest()
+            ->paginate(3);
+        return view('livewire.users.show-profile', ['latest' => $latest]);
     }
 }

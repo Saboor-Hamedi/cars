@@ -3,6 +3,11 @@
         @foreach ($cars as $car)
             <div class="card">
                 <div class="p-2">
+                    @if ($car->image)
+                        <img src="{{ asset('storage/' . $car->image) }}" alt="Car Image">
+                    @else
+                        <img src="{{ asset('storage/default/car3.png') }}" alt="Car Image">
+                    @endif
                     <div
                         class="py-2 transition-colors duration-300 border-2 border-blue-600 card-icon hover:cursor-pointer hover:border-red-400">
                         @if ($car->user->profile && $car->user->profile->photo)

@@ -20,7 +20,9 @@ class Vote extends Component
     {
         if (!Auth::check()) {
             session()->flash('error', 'Please log in to vote.');
+            $this->dispatch('voteMessage');
             return;
+
         }
 
         $user = auth()->user();

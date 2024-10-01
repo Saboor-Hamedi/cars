@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cards.css') }}">
     <link rel="stylesheet" href="{{ asset('css/files.css') }}">
-   <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
+    {{-- <script src="{{ asset('vendor/livewire/livewire.js') }}" defer></script> --}}
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -36,6 +37,7 @@
 
     <script src="{{ asset('js/sidebar.js') }}"></script>
     <script src="{{ asset('js/carColor.js') }}"></script>
+
 
 </body>
 

@@ -37,6 +37,11 @@
                 class="w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2"></textarea>
             <x-input-error :messages="$errors->get('description')" />
         </div>
+        {{-- cars image --}}
+        <div class="mt-2">
+            <input wire:model="image" type="file" class="p-3 " id="image" name="image">
+            <x-input-error :messages="$errors->get('image')" />
+        </div>
 
         <button type="submit" class="default-button">
             Register

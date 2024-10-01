@@ -26,3 +26,4 @@ document.addEventListener('livewire:navigated', function () {
   window.openSidebar = openSidebar;
 });
 
+

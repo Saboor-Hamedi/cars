@@ -58,8 +58,6 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
-
-
     public function votes()
     {
         return $this->belongsToMany(Car::class, 'votes')

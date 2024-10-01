@@ -1,9 +1,12 @@
 <x-layout>
-    <x-slot:title>
+    {{-- <x-slot:title>
        {{ __('Home') }}
-    </x-slot>
+    </x-slot> --}}
+    {{-- <div class="mt-2 text-xl"></div> --}}
+
     @livewire('header')
-     <div class="py-2">
+    @livewire('hero')
+    <div class="py-2">
         <div class="mx-auto ">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">

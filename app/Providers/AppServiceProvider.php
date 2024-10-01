@@ -29,8 +29,11 @@ class AppServiceProvider extends ServiceProvider
         Livewire::component('logout', Logout::class);
         Livewire::component('cars/store', Store::class);
         Blade::component('app-layout', \App\View\Components\AppLayout::class);
-        Livewire::setScriptRoute(function ($handle) {
-            return Route::get('/public/vendor/livewire/livewire.js', $handle);
+        Livewire::setScriptRoute(callback: function ($handle) {
+            return Route::get('/vendor/livewire/livewire.js', $handle);
         });
+
+
+
     }
 }

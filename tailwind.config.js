@@ -15,10 +15,15 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                blue: {
+                    300: '#3498db',
+                },
+            },
         },
     },
 
-plugins: [
-    require('@tailwindcss/forms'),
-]
+    plugins: [
+        require('@tailwindcss/forms'),
+    ]
 };

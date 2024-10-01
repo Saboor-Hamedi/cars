@@ -60,6 +60,9 @@
     margin-right: 10px;
 }
 
+#voteMessage {
+    display: block;
+}
 
 @media (max-width: 768px) {
     .custom-container {
@@ -70,3 +73,5 @@
         width: 100%;
     }
 }
+
+/* hero */
