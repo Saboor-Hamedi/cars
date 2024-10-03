@@ -85,8 +85,10 @@
                     {{-- pick color --}}
                     @php
                         $color = $car->color;
-                        if (strpos($color, '#') !== 0) {
-                            $color = '#' . $color;
+                        if (preg_match('/^#?[a-fA-F0-9]{3,6}$/', $color)) {
+                            if (strpos($color, '#') !== 0) {
+                                $color = '#' . $color;
+                            }
                         }
                     @endphp
 
@@ -125,4 +127,5 @@
     <div class="flex justify-center mb-6 pagination-wrapper">
         <span class="font-medium">{{ $latest->links('vendor.pagination.tailwind') }}</span>
     </div>
+    @livewire('footer')
 </x-layout>

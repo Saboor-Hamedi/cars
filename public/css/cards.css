@@ -2,7 +2,8 @@
     display: flex;
     padding: 10px 20px;
     flex-wrap: wrap;
-    background-color: red;
+    /* background-color: red; */
+    margin-bottom: 10px;
 
 }
 
@@ -90,4 +91,14 @@
     }
 }
 
-/* hero */
+/* chat */
+#chat-box {
+    max-height: 300px;
+    z-index: 1000;
+}
+
+@media (min-width: 768px) {
+    #chat-box {
+        max-height: 400px;
+    }
+}

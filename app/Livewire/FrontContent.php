@@ -18,4 +18,7 @@ class FrontContent extends Component
             ->paginate(3);
         return view('livewire.front-content', ['cars' => $cars]);
     }
+
+
+
 }

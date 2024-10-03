@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cards.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @livewireStyles
 
 </head>
 
@@ -17,7 +16,8 @@
     <main>
         {{ $slot }}
     </main>
-    @livewireScripts
+
+
 </body>
 
 </html>

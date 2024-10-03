@@ -40,8 +40,10 @@
                     {{-- pick color --}}
                     @php
                         $color = $car->color;
-                        if (strpos($color, '#') !== 0) {
-                            $color = '#' . $color;
+                        if (preg_match('/^#?[a-fA-F0-9]{3,6}$/', $color)) {
+                            if (strpos($color, '#') !== 0) {
+                                $color = '#' . $color;
+                            }
                         }
                     @endphp
 
@@ -67,7 +69,8 @@
                         </svg>
                     </small>
                     <p>
-                        {!! Str::limit($car->description, 30, '...') !!}
+                        {!! Purifier::clean(Str::limit($car->description, 30, '...')) !!}
+
                     </p>
                 </div>
                 {{-- style="background-color: {{ $color }}" --}}
@@ -76,7 +79,7 @@
             </div>
         @endforeach
     </div>
-    <div class="flex justify-center mt-6 pagination-wrapper">
+    <div class="flex justify-center mb-6 pagination-wrapper">
         <span class="font-medium">{{ $cars->links('vendor.pagination.tailwind') }}</span>
     </div>
 </div>

@@ -10,5 +10,6 @@
             @livewire('front-content')
         </div>
     </div>
+    @livewire('chat.chatbot')
     @livewire('footer')
 </x-layout>

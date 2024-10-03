@@ -21,11 +21,6 @@ new #[Layout('layouts.guest')] class extends Component {
 
         $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
     }
-
-    public function clickMe()
-    {
-        return redirect()->to('/');
-    }
 }; ?>
 
 <div>
@@ -68,9 +63,7 @@ new #[Layout('layouts.guest')] class extends Component {
                 </a>
             @endif
 
-            <x-primary-button class=" ms-3" wire:click='clickMe'>
-                {{ __('Home') }}
-            </x-primary-button>
+
             <x-primary-button class=" ms-3">
                 {{ __('Log in') }}
             </x-primary-button>

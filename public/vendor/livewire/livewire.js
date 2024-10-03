@@ -1,5 +1,3 @@
-
-
 (() => {
   var __create = Object.create;
   var __defProp = Object.defineProperty;
@@ -1172,7 +1170,6 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     let rightSideSafeExpression = /^[\n\s]*if.*\(.*\)/.test(expression.trim()) || /^(let|const)\s/.test(expression.trim()) ? `(async()=>{ ${expression} })()` : expression;
     const safeAsyncFunction = () => {
       try {
-        let rightSideSafeExpression = "1 + 1"; // Example expression
         let func2 = new AsyncFunction(["__self", "scope"], `with (scope) { __self.result = ${rightSideSafeExpression} }; __self.finished = true; return __self.result;`);
         Object.defineProperty(func2, "name", {
           value: `[Alpine] ${expression}`
@@ -1183,7 +1180,6 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
         return Promise.resolve();
       }
     };
-
     let func = safeAsyncFunction();
     evaluatorMemo[expression] = func;
     return func;

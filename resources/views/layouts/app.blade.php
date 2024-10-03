@@ -14,9 +14,7 @@
     <link rel="stylesheet" href="{{ asset('css/cards.css') }}">
     <link rel="stylesheet" href="{{ asset('css/files.css') }}">
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
-
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @livewireStyles
 </head>
 
 <body>
@@ -41,7 +39,8 @@
     <!-- Scripts -->
     <script src="{{ asset('js/sidebar.js') }}"></script>
     <script src="{{ asset('js/carColor.js') }}"></script>
-    @livewireScripts
+
+
 </body>
 
 </html>

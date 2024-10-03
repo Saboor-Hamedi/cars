@@ -8,8 +8,9 @@
         "php": "^8.2",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
-        "livewire/livewire": "^3.4",
-        "livewire/volt": "^1.0"
+        "livewire/livewire": "*",
+        "livewire/volt": "^1.0",
+        "mews/purifier": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.13",
@@ -38,9 +39,6 @@
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
         ],
-        "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
-        ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
@@ -49,14 +47,10 @@
             "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
             "@php artisan migrate --graceful --ansi"
         ],
-        
+
          "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
-            "@php artisan vendor:publish --tag=livewire:assets --ansi --force",
-            "cp vendor/livewire/livewire/dist/livewire.js public/assets/livewire/livewire.js",
-            "cp vendor/livewire/livewire/dist/livewire.min.js public/assets/livewire/livewire.min.js",
-            "cp vendor/livewire/livewire/dist/livewire.esm.js public/assets/livewire/livewire.esm.js",
-            "cp vendor/livewire/livewire/dist/manifest.json public/assets/livewire/manifest.json"
+            "@php artisan vendor:publish --tag=livewire:assets --ansi --force"
         ]
     },
     "extra": {
