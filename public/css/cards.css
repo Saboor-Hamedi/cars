@@ -1,8 +1,9 @@
-.custom-container {
+.post__section {
     display: flex;
-    gap: 20px;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 10px 20px;
+    flex-wrap: wrap;
+    background-color: red;
+
 }
 
 .card {
@@ -17,7 +18,6 @@
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,8 +31,8 @@
 }
 
 .card-title {
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 16px;
+    font-weight: 500;
     margin-bottom: 10px;
 }
 
@@ -64,13 +64,29 @@
     display: block;
 }
 
-@media (max-width: 768px) {
-    .custom-container {
-        flex-direction: column;
+/* Medium screens (e.g., tablets) */
+@media (max-width: 992px) {
+    .post__section {
+        flex-direction: row;
+        /* Two cards per row */
     }
 
     .card {
-        width: 100%;
+        flex: 1 1 calc(50% - 20px);
+        /* Two cards per row */
+    }
+}
+
+/* Small screens (e.g., mobile phones) */
+@media (max-width: 768px) {
+    .post__section {
+        flex-direction: column;
+        /* Single column layout */
+    }
+
+    .card {
+        flex: 1 1 100%;
+        /* Full width for each card */
     }
 }
 

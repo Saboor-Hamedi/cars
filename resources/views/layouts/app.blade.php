@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <title>{{ config('app.name', 'Blog') }}</title>
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cards.css') }}">
     <link rel="stylesheet" href="{{ asset('css/files.css') }}">
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
-    {{-- <script src="{{ asset('vendor/livewire/livewire.js') }}" defer></script> --}}
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
 </head>
 
 <body>
@@ -32,13 +33,15 @@
                 </div>
             </header>
         @endif
+
+        <!-- Page Content -->
         {{ $slot }}
     </main>
 
+    <!-- Scripts -->
     <script src="{{ asset('js/sidebar.js') }}"></script>
     <script src="{{ asset('js/carColor.js') }}"></script>
-
-
+    @livewireScripts
 </body>
 
 </html>

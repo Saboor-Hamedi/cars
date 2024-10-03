@@ -9,7 +9,7 @@ use Livewire\Component;
 class Logout extends Component
 {
 
-    // custom logout 
+    // custom logout
 
     public function logout()
     {

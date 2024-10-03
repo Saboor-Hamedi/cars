@@ -1,15 +1,17 @@
 <?php
 
 namespace App\Livewire;
-
+use App\Livewire\Logout;
 use App\Models\Car;
-use App\Notifications\CarNotify;
 use Livewire\Component;
 
 class FrontContent extends Component
 {
     public function render()
     {
+
+        // $log = new Logout();
+        // $log->logout();
 
         $cars = Car::with(['user.profile'])
             ->latest()

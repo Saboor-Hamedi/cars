@@ -20,7 +20,7 @@ class Store extends Component
         'name' => 'required|min:3|max:50',
         'color' => 'required|max:8',
         'year' => 'required|digits:4|integer|min:1900',
-        'image' => 'nullable|max:1024|image|mimes:image/*',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'description' => 'required|min:3|max:1000',
     ];
 

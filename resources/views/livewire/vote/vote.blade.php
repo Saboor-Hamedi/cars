@@ -11,7 +11,7 @@
         {{ $count }}
         <div class="vote-error" id="voteMessage">
             @if (session()->has('error'))
-                <p class="text-xs text-red-500 vote-message">
+                <p class="text-xs text-center text-red-500 t vote-message ">
                     {{ session('error') }}
                 </p>
             @endif
