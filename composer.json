@@ -32,7 +32,10 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "files": [
+            "app/Livewire/Chat/chatbot_queries.php"
+        ]
     },
     "scripts": {
         "post-autoload-dump": [

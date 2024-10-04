@@ -1,6 +1,5 @@
 <?php
 
-use Mews\Purifier\Purifier;
 
 return [
 

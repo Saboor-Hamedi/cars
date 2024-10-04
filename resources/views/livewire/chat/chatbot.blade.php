@@ -38,11 +38,13 @@
                         {{ $this->highButtonDisabled ? 'disabled' : '' }}>High</button>
                 </div>
 
-                <small class="text-[10] text-red-500">
-                    @error('message')
-                        {{ $message }}
-                    @enderror
-                </small>
+                <div class="flex justify-center mb-2 items-center">
+                    <small class="text-[10] text-red-500">
+                        @error('message')
+                            {{ $message }}
+                        @enderror
+                    </small>
+                </div>
 
                 <input type="text" wire:model="message" wire:keydown.enter="sendMessage"
                     class="w-full p-2 border rounded @error('message') border-red-500 @enderror"
@@ -56,16 +58,22 @@
 
     <script>
         const chatBox = document.getElementById('chat-box');
-
-        // Efficient scroll handling using MutationObserver
+        // Efficient scroll handling with MutationObserver
         const observer = new MutationObserver((mutations) => {
             if (mutations[0].addedNodes.length > 0) {
-                chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom after new messages
+                chatBox.scrollTop = chatBox.scrollHeight; // Scroll to bottom after new messages
             }
         });
 
         observer.observe(chatBox, {
             childList: true
         });
+
+        // Alternative scroll handling (less efficient, but more reliable)
+        window.addEventListener('scroll-to-bottom', () => {
+            chatBox.scrollTop = chatBox.scrollHeight; // Scroll to bottom on event
+        });
     </script>
+
+
 </div>
