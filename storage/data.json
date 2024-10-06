@@ -30,5 +30,15 @@
     "high": {
         "response": "Our high school is designed for students aged 17-18. We offer a range of subjects, including English, math, science, and social studies, as well as elective courses in areas such as business, technology, and the arts. Our high school is known for its academic rigor and preparation for university.",
         "follow_up": "Would you like to know more about our high school curriculum or admission process?"
+    },
+    "contact": {
+        "response": "Reach out to us on Whatsapp:",
+        "links": {
+            "whatsapp": "https://wa.me/+93794730207",
+            "facebook": "https://www.facebook.com/saboor.hamedi.7",
+            "instagram": "https://www.instagram.com/saboorhamedi_",
+            "email": "https://mail.google.com/mail/u/1/?view=cm&to=janhamedi49@gmail.com&su=Need Information&body=Write"
+        },
+        "follow_up": "For more contact write social media"
     }
 }

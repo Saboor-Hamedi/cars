@@ -15,15 +15,11 @@ class Chatbot extends Component
     public $message;
     public $isOpen = false;
     protected $queries;
-    // protected $queries = [];
-
     public $primaryButtonDisabled = false;
     public $seniorButtonDisabled = false;
     public $highButtonDisabled = false;
 
-
-
-    protected $chatService;
+    protected ?ChatService $chatService = null;
 
     public function __construct()
     {
@@ -31,31 +27,16 @@ class Chatbot extends Component
     }
     public function mount()
     {
-        $this->isOpen = session()->has('chatbox-open') ? session('chatbox-open') : false;
 
+        $this->isOpen = session()->has('chatbox-open') ? session('chatbox-open') : false;
     }
-    public function loadQueries()
+    public function rules(): array
     {
-        // $filePath = storage_path('data.json');
-        $filePath = storage_path() . DIRECTORY_SEPARATOR . 'data.json';
-        // dd($filePath);
-        if (file_exists($filePath)) {
-            try {
-                $jsonData = file_get_contents($filePath);
-                // dd($jsonData);
-                $this->queries = json_decode($jsonData, true);
-                if (json_last_error() !== JSON_ERROR_NONE) {
-                    throw new Exception('Error loading chatbot queries from JSON: ' . json_last_error_msg());
-                }
-            } catch (Exception $e) {
-                Log::error('Error loading chatbot queries from JSON: ' . $e->getMessage());
-                $this->queries = []; // Set to an empty array in case of loading errors
-            }
-        } else {
-            $this->queries = []; // Set to an empty array if file not found
-            Log::error('Error loading chatbot queries from JSON: File not found');
-        }
+        return [
+            'message' => 'required|min:1|max:50'
+        ];
     }
+
     public function sendMessage()
     {
         $this->validate();
@@ -95,15 +76,15 @@ class Chatbot extends Component
 
     private function getBotResponse($message)
     {
-        $this->loadQueries();
+        $this->chatService->loadQueries();
         $cleanMessage = $this->sanitizeMessage($message);
         try {
-            if (empty($this->queries)) {
+            if (empty($this->chatService->queries)) {
                 throw new Exception('Failed to load queries');
             }
 
             Log::debug('Clean message: ' . $cleanMessage);
-            foreach ($this->queries as $query => $response) {
+            foreach ($this->chatService->queries as $query => $response) {
                 Log::debug('Checking query: ' . $query);
                 if (stripos(strtolower($cleanMessage), strtolower($query)) !== false) {
                     Log::debug('Query matched: ' . $query);
@@ -134,8 +115,8 @@ class Chatbot extends Component
             'text' => $info['description'],
             'time' => $this->chatService->CurrentTime()
         ];
-        $this->disableButton($button);
-        // $this->dispatch('scroll-to-bottom');
+        $this->chatService->disableButton($this, $button);
+        $this->dispatch('scroll-to-bottom');
     }
 
     public function showPrimaryInfo()
@@ -153,19 +134,6 @@ class Chatbot extends Component
         $this->showInfo('high');
     }
 
-    private function disableButton($button)
-    {
-        if ($button === 'primary') {
-            $this->primaryButtonDisabled = true;
-        } elseif ($button === 'senior') {
-            $this->seniorButtonDisabled = true;
-        } elseif ($button === 'high') {
-            $this->highButtonDisabled = true;
-        }
-        $this->dispatch('start-button-timer', ['button' => $button]);
-    }
-
-
     public function updateButtonStates()
     {
         if ($this->hasMessages()) {
@@ -180,52 +148,26 @@ class Chatbot extends Component
     {
         $this->messages = []; // Clear all chat messages
         $this->message = ''; // Clear the message input
-        $this->resetButtonStates(); // Reset button states
-        $this->clearSession(); // Clear any relevant session data
+        $this->chatService->resetButtonStates($this);
+        $this->chatService->clearSession($this);
     }
-
-    private function resetButtonStates(): void
-    {
-        // Reset the button states to their default enabled statuses
-        $this->primaryButtonDisabled = false;
-        $this->seniorButtonDisabled = false;
-        $this->highButtonDisabled = false;
-    }
-
-    private function clearSession(): void
-    {
-        session()->forget('chatbox-open');
-        session()->forget('getMessage'); // Clear any specific session keys (if applicable)
-    }
-
-    public function rules(): array
-    {
-        return [
-            'message' => 'required|min:1|max:50'
-        ];
-    }
-    // private function CurrentTime()
-    // {
-    //     // return date('h:i:s A');
-    //     return Carbon::now()->format('h:i:s A');
-    // }
     private function sanitizeMessage($message)
     {
         $config = HTMLPurifier_Config::createDefault();
-
-        // Configure HTMLPurifier to allow stickers (assuming stickers are represented by specific HTML elements or classes)
-        $config->set('HTML.AllowedElements', 'img'); // Allowing only img elements, modify as needed
-        $config->set('HTML.AllowedAttributes', 'img.src,img.alt,img.class'); // Allowing only specific attributes for img
+        $config->set('HTML.AllowedElements', 'img');
+        $config->set('HTML.AllowedAttributes', 'img.src,img.alt,img.class');
 
         $purifier = new HTMLPurifier($config);
         // Allow letters, numbers, spaces, @, and certain special characters used in stickers
         $cleanMessage = preg_replace('/[^a-zA-Z0-9\s@#\-_.:;,!()]/', '', $message);
-
         return $purifier->purify($cleanMessage);
     }
 
     public function render()
     {
-        return view('livewire.chat.chatbot');
+        $filePath = storage_path() . DIRECTORY_SEPARATOR . 'data.json';
+        $whatsapp = file_get_contents($filePath);
+        $dataJson = json_decode($whatsapp, true);
+        return view('livewire.chat.chatbot', ['dataJson' => $dataJson]);
     }
 }
