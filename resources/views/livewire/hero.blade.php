@@ -16,7 +16,7 @@
                         class="flex-1 w-full px-3 py-2 mb-2 placeholder-gray-400 border border-gray-300 appearance-none sm:w-auto rounded-l-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm sm:mb-0 sm:mr-3"
                         placeholder="Enter your email">
                     <button type="submit"
-                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent shadow-sm rounded-r-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        class=" inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-[#c13584] border border-transparent shadow-sm rounded-r-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                         REQUIRE OFFER
                     </button>
                 </div>

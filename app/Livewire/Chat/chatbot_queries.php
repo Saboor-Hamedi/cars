@@ -1,5 +1,5 @@
 <?php
-$queries = [
+return [
     'hi' => [
         'response' => 'Hello! How can I help you today?',
         'follow_up' => 'For more Info: Click on, primary, senior and high buttons',
@@ -34,4 +34,3 @@ $queries = [
         'follow_up' => 'Would you like to know more about our high school curriculum or admission process?',
     ],
 ];
-return $queries;

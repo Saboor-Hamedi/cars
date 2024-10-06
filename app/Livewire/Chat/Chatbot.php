@@ -2,9 +2,11 @@
 
 namespace App\Livewire\Chat;
 
+use Carbon\Carbon;
 use Exception;
 use HTMLPurifier;
 use HTMLPurifier_Config;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
@@ -19,16 +21,38 @@ class Chatbot extends Component
     public $seniorButtonDisabled = false;
     public $highButtonDisabled = false;
 
-    protected $rules = [
-        'message' => 'required|min:1|max:50'
-    ];
+
     public function mount()
     {
         $this->isOpen = session()->has('chatbox-open') ? session('chatbox-open') : false;
-        if (!$this->isOpen) {
-            $this->dispatch('chat-box-closed');
+
+    }
+
+
+
+    public function loadQueries()
+    {
+        // $filePath = storage_path('data.json');
+        $filePath = storage_path() . DIRECTORY_SEPARATOR . 'data.json';
+        // dd($filePath);
+        if (file_exists($filePath)) {
+            try {
+                $jsonData = file_get_contents($filePath);
+                // dd($jsonData);
+                $this->queries = json_decode($jsonData, true);
+                if (json_last_error() !== JSON_ERROR_NONE) {
+                    throw new Exception('Error loading chatbot queries from JSON: ' . json_last_error_msg());
+                }
+            } catch (Exception $e) {
+                Log::error('Error loading chatbot queries from JSON: ' . $e->getMessage());
+                $this->queries = []; // Set to an empty array in case of loading errors
+            }
+        } else {
+            $this->queries = []; // Set to an empty array if file not found
+            Log::error('Error loading chatbot queries from JSON: File not found');
         }
     }
+
 
     public function sendMessage()
     {
@@ -39,7 +63,7 @@ class Chatbot extends Component
         $this->messages[] = [
             'user' => 'You',
             'text' => $cleanMessage,
-            'time' => now()->format('H:i')
+            'time' => $this->CurrentTime()
         ];
         $this->message = '';
 
@@ -49,53 +73,70 @@ class Chatbot extends Component
             $this->messages[] = [
                 'user' => 'Bot',
                 'text' => $botResponse,
-                'time' => now()->format('H:i')
+                'time' => $this->CurrentTime()
             ];
         } catch (Exception $e) {
             $this->messages[] = [
                 'user' => 'Bot',
                 'text' => 'Oops! Something went wrong while processing your request. Please try again later.',
-                'time' => now()->format('H:i')
+                'time' => $this->CurrentTime()
             ];
         }
-
         $this->dispatch('scroll-to-bottom');
     }
-
 
     public function toggleChat()
     {
         $this->isOpen = !$this->isOpen;
         session(['chatbox-open' => $this->isOpen]);
     }
+
     public function updated($propertyName)
     {
         if ($propertyName === 'messages') {
             $this->scrollToBottom();
         }
     }
+
     public function scrollToBottom()
     {
-        $this->dispatchBrowserEvent('scroll-to-bottom');
-
+        $this->dispatch('scroll-to-bottom');
     }
+
     private function getBotResponse($message)
     {
+
+        $this->loadQueries();
         try {
-            $this->queries = app('chatbot.queries');
+            // $this->queries = app('chatbot.queries');
+            // $cleanMessage = $this->sanitizeMessage($message);
+            // // Check if the user's message matches any of the supported queries
+            // foreach ($this->queries as $query => $response) {
+            //     if (stripos($cleanMessage, $query) !== false) {
+            //         // Return the response and follow-up question (if any)
+            //         return $response['response'] . ($response['follow_up'] ? "\n\n" . $response['follow_up'] : '');
+            //     }
+            // }
+            if (empty($this->queries)) {
+                throw new Exception('Failed to load queries');
+            }
             $cleanMessage = $this->sanitizeMessage($message);
-            // Check if the user's message matches any of the supported queries
+            Log::debug('Clean message: ' . $cleanMessage);
             foreach ($this->queries as $query => $response) {
-                if (stripos($cleanMessage, $query) !== false) {
-                    // Return the response and follow-up question (if any)
+                Log::debug('Checking query: ' . $query);
+                if (stripos(strtolower($cleanMessage), strtolower($query)) !== false) {
+                    Log::debug('Query matched: ' . $query);
                     return $response['response'] . ($response['follow_up'] ? "\n\n" . $response['follow_up'] : '');
                 }
             }
+            Log::debug('No query matched');
             return $this->cantAnswer();
         } catch (Exception $e) {
             Log::error('Chatbot query processing error: ' . $e->getMessage());
         }
     }
+    // load data.json
+
 
     private function cantAnswer()
     {
@@ -125,12 +166,13 @@ class Chatbot extends Component
             'description' => 'Our high school is designed for students aged 17-18. We offer a range of subjects, including English, math, science, and social studies, as well as elective courses in areas such as business, technology, and the arts. Our high school is known for its academic rigor and preparation for university.',
         ];
     }
+
     public function showPrimaryInfo()
     {
         $this->messages[] = [
             'user' => 'Bot',
             'text' => $this->getPrimaryInfo()['description'],
-            'time' => now()->format('H:i')
+            'time' => $this->CurrentTime()
         ];
         $this->disableButton('primary');
         $this->dispatch('scroll-to-bottom');
@@ -141,7 +183,7 @@ class Chatbot extends Component
         $this->messages[] = [
             'user' => 'Bot',
             'text' => $this->getSeniorInfo()['description'],
-            'time' => now()->format('H:i')
+            'time' => $this->CurrentTime()
         ];
         $this->disableButton('senior');
         $this->dispatch('scroll-to-bottom');
@@ -152,12 +194,11 @@ class Chatbot extends Component
         $this->messages[] = [
             'user' => 'Bot',
             'text' => $this->getHighInfo()['description'],
-            'time' => now()->format('H:i')
+            'time' => $this->CurrentTime()
         ];
         $this->disableButton('high');
         $this->dispatch('scroll-to-bottom');
     }
-
 
     private function disableButton($button)
     {
@@ -197,6 +238,53 @@ class Chatbot extends Component
         return $purifier->purify($cleanMessage);
     }
 
+    public function updateButtonStates()
+    {
+
+        // if ($this->getMessages()) {
+        //     $this->resetChat();
+        // }
+        if ($this->hasMessages()) {
+            $this->resetChat();
+        }
+    }
+    private function hasMessages(): bool
+    {
+        return !empty($this->messages);
+    }
+    private function resetChat(): void
+    {
+        $this->messages = []; // Clear all chat messages
+        $this->message = ''; // Clear the message input
+        $this->resetButtonStates(); // Reset button states
+        $this->clearSession(); // Clear any relevant session data
+    }
+
+    private function resetButtonStates(): void
+    {
+        // Reset the button states to their default enabled statuses
+        $this->primaryButtonDisabled = false;
+        $this->seniorButtonDisabled = false;
+        $this->highButtonDisabled = false;
+    }
+
+    private function clearSession(): void
+    {
+        session()->forget('chatbox-open');
+        session()->forget('getMessage'); // Clear any specific session keys (if applicable)
+    }
+
+    public function rules(): array
+    {
+        return [
+            'message' => 'required|min:1|max:50'
+        ];
+    }
+    private function CurrentTime()
+    {
+        // return date('h:i:s A');
+        return Carbon::now()->format('h:i:s A');
+    }
     public function render()
     {
         return view('livewire.chat.chatbot');
