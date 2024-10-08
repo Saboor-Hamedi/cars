@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Livewire\Cars\Store;
+use App\Livewire\Contact\Contact;
 use App\Livewire\Logout;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
@@ -29,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useTailwind();
         Livewire::component('logout', Logout::class);
         Livewire::component('cars/store', Store::class);
+        Livewire::component('contact/contact', Contact::class);
 
         $this->timezone();
         Blade::component('app-layout', \App\View\Components\AppLayout::class);

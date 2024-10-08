@@ -76,6 +76,7 @@ class Chatbot extends Component
 
     private function getBotResponse($message)
     {
+
         $this->chatService->loadQueries();
         $cleanMessage = $this->sanitizeMessage($message);
         try {
@@ -84,18 +85,18 @@ class Chatbot extends Component
             }
 
             Log::debug('Clean message: ' . $cleanMessage);
-            foreach ($this->chatService->queries as $query => $response) {
-                Log::debug('Checking query: ' . $query);
-                if (stripos(strtolower($cleanMessage), strtolower($query)) !== false) {
-                    Log::debug('Query matched: ' . $query);
-                    return $response['response'] . ($response['follow_up'] ? "\n\n" . $response['follow_up'] : '');
-                }
-            }
-            Log::debug('No query matched');
+            $response = $this->chatService->matchQuery($cleanMessage);
 
+            if ($response) {
+                Log::debug('Query matched');
+                return $response['response'] . ($response['follow_up'] ? "\n\n" . $response['follow_up'] : '');
+            }
+
+            Log::debug('No query matched');
             return $this->chatService->cantAnswer();
         } catch (Exception $e) {
             Log::error('Chatbot query processing error: ' . $e->getMessage());
+            return 'Oops! Something went wrong while processing your request. Please try again later.';
         }
     }
     public function showInfo($button)
@@ -170,4 +171,5 @@ class Chatbot extends Component
         $dataJson = json_decode($whatsapp, true);
         return view('livewire.chat.chatbot', ['dataJson' => $dataJson]);
     }
+
 }

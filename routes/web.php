@@ -17,6 +17,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/vote', Vote::class)->name('vote.vote');
 });
 
+// contact
+// Route::get('/contact-us', Contact::class)->name('contact-us.contact');
+Route::get('/contact', function () {
+    return view('contact.contact'); // Render the contact view
+})->name('contact.contact');
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');

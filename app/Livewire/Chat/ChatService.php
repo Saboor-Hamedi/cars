@@ -36,6 +36,29 @@ class ChatService extends Component
             Log::error('Error loading chatbot queries from JSON: File not found');
         }
     }
+    public function matchQuery($cleanMessage)
+    {
+        foreach ($this->queries as $query => $response) {
+            Log::debug('Checking query:' . $query);
+
+            // Match against variations if available
+            if (isset($response['variations'])) {
+                foreach ($response['variations'] as $variation) {
+                    if (stripos(strtolower($cleanMessage), strtolower($variation)) !== false) {
+                        return $response;
+                    }
+                }
+            }
+            // check direct match
+            if (stripos(strtolower($cleanMessage), strtolower($query)) !== false) {
+                Log::debug('Query matched: ' . $query);
+
+                return $response;
+            }
+
+        }
+        return null;
+    }
 
     public function getQueries()
     {

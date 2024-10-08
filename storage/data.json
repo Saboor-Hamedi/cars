@@ -1,44 +1,82 @@
 {
-    "hi": {
+    "greetings": {
+        "variations": [
+            "hi",
+            "hello",
+            "hey"
+        ],
         "response": "Hello! How can I help you today?",
-        "follow_up": "For more Info: Click on, primary, senior and high buttons"
-    },
-    "hello": {
-        "response": "Hello! How can I help you today?",
-        "follow_up": "For more Info: Click on, primary, senior and high buttons"
+        "follow_up": "For more Info: Click on the primary, senior, and high buttons."
     },
     "fee": {
+        "variations": [
+            "fee",
+            "fees",
+            "tuition",
+            "cost"
+        ],
         "response": "Sure thing! Here’s our fee structure: ... (insert fee structure here)",
         "follow_up": "Would you like to know more about our admission process?"
     },
     "admission": {
+        "variations": [
+            "admission",
+            "enroll",
+            "enrollment"
+        ],
         "response": "Of course! Here’s our admission process: ... (insert admission process here)",
         "follow_up": "Would you like to know more about our fee structure?"
     },
     "grades": {
+        "variations": [
+            "grades",
+            "classes",
+            "courses",
+            "course"
+        ],
         "response": "No problem! Here’s what we offer: ... (insert grades here)",
         "follow_up": "Would you like to know more about our curriculum?"
     },
     "primary": {
+        "variations": [
+            "primary",
+            "elementary",
+            "junior"
+        ],
         "response": "Our primary school is designed for students aged 5-11. We offer a comprehensive curriculum that includes English, math, science, and social studies. Our primary school is known for its small class sizes and experienced teachers.",
         "follow_up": "Would you like to know more about our primary school curriculum or admission process?"
     },
     "senior": {
+        "variations": [
+            "senior",
+            "middle",
+            "secondary"
+        ],
         "response": "Our senior school is designed for students aged 12-16. We offer a wide range of subjects, including English, math, science, and social studies, as well as elective courses in areas such as music, art, and drama. Our senior school is known for its academic excellence and supportive community.",
         "follow_up": "Would you like to know more about our senior school curriculum or admission process?"
     },
     "high": {
+        "variations": [
+            "high",
+            "high school",
+            "upper"
+        ],
         "response": "Our high school is designed for students aged 17-18. We offer a range of subjects, including English, math, science, and social studies, as well as elective courses in areas such as business, technology, and the arts. Our high school is known for its academic rigor and preparation for university.",
         "follow_up": "Would you like to know more about our high school curriculum or admission process?"
     },
     "contact": {
-        "response": "Reach out to us on Whatsapp:",
+        "variations": [
+            "contact",
+            "reach",
+            "in touch"
+        ],
+        "response": "Contact",
         "links": {
             "whatsapp": "https://wa.me/+93794730207",
             "facebook": "https://www.facebook.com/saboor.hamedi.7",
             "instagram": "https://www.instagram.com/saboorhamedi_",
-            "email": "https://mail.google.com/mail/u/1/?view=cm&to=janhamedi49@gmail.com&su=Need Information&body=Write"
+            "email": "mailto:janhamedi49@gmail.com?subject=Need%20Information&body=Write"
         },
-        "follow_up": "For more contact write social media"
+        "follow_up": "us for more details."
     }
 }

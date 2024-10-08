@@ -14,6 +14,8 @@
                                 <x-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')" wire:navigate>Login</x-nav-link>
                                 <x-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')"
                                     wire:navigate>Register</x-nav-link>
+                                <x-nav-link href="{{ route('contact.contact') }}" :active="request()->routeIs('contact.contact')"
+                                    wire:navigate>Contact</x-nav-link>
                             @endguest
                         </div>
                     </div>
