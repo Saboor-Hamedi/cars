@@ -5,7 +5,6 @@ namespace App\Livewire\Cars;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Str;
-use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 class Store extends Component
 {
     use WithFileUploads;
@@ -15,13 +14,14 @@ class Store extends Component
     public $year;
     public $image;
     public $description;
+    public $markdown;
 
     protected $rules = [
         'name' => 'required|min:3|max:50',
         'color' => 'required|max:8',
         'year' => 'required|digits:4|integer|min:1900',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        'description' => 'required|min:3|max:1000',
+        'description' => 'required|min:3|max:10000',
     ];
 
     public function store()
@@ -56,6 +56,7 @@ class Store extends Component
         $user->car()->create($data);
         session()->flash('message', "'{$this->name}' successfully stored");
         $this->reset();
+        $this->description = '';
     }
 
     public function render()

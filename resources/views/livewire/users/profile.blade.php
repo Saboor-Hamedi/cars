@@ -36,6 +36,7 @@
                     <div class="flex justify-start mt-3">
                         {{-- <img id="image-preview" src="{{ $photo ? asset('storage/' . $photo) : '' }}"
                             class="custom-circle-image"> --}}
+
                         @if ($photo)
                             <img id="image-preview" src="{{ $photo->temporaryUrl() }}" class="custom-circle-image">
                         @else

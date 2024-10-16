@@ -39,9 +39,17 @@
                         <small class="text-sm text-red-500 ">{{ $message }}</small>
                     @enderror
                 </div>
-                <x-primary-button type="submit" class="outline-none ring-inherit ring-0">
+                {{-- <x-primary-button type="submit" class="outline-none ring-inherit ring-0">
                     Send
-                </x-primary-button>
+                </x-primary-button> --}}
+
+                <div class="flex items-center">
+                    <x-primary-button type="submit" class="outline-none ring-inherit ring-0"
+                        wire:loading.attr="disabled">
+                        <span wire:loading.remove>Send</span>
+                        <span wire:loading>Loading...</span>
+                    </x-primary-button>
+                </div>
             </form>
         </div>
     </section>

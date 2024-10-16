@@ -3,11 +3,11 @@
 namespace App\Providers;
 
 use App\Livewire\Cars\Store;
-use App\Livewire\Contact\Contact;
+use App\Livewire\ContactUs\Contact;
 use App\Livewire\Logout;
+
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+
     }
 
     /**
@@ -34,9 +34,7 @@ class AppServiceProvider extends ServiceProvider
 
         $this->timezone();
         Blade::component('app-layout', \App\View\Components\AppLayout::class);
-        // Livewire::setScriptRoute(callback: function ($handle) {
-        //     return Route::get('/vendor/livewire/livewire.js', $handle);
-        // });
+
 
     }
 

@@ -1,8 +1,4 @@
 <x-layout>
-    {{-- <x-slot:title>
-       {{ __('Home') }}
-    </x-slot> --}}
-    {{-- <div class="mt-2 text-xl"></div> --}}
     @livewire('header')
     @livewire('hero')
     <div class="mx-auto">

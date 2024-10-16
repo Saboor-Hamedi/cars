@@ -5,16 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Blog') }}</title>
-
-    <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/cards.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/files.css') }}">
-    <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
+    <link rel="stylesheet" href="{{asset('css/sidebar.css')}}">
+    <link rel="stylesheet" href="{{asset('css/cards.css')}}">
+    <link rel="stylesheet" href="{{asset('css/forms.css')}}">
+    <link rel="stylesheet" href="{{asset('css/files.css')}}">
+    @livewireStyles
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
 
 <body>
@@ -25,22 +25,17 @@
         <livewire:layout.navigation />
         <!-- Page Heading -->
         @if (isset($header))
-            <header class="bg-white shadow">
-                <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
+        <header class="bg-white shadow">
+            <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                {{ $header }}
+            </div>
+        </header>
         @endif
-
-        <!-- Page Content -->
         {{ $slot }}
     </main>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/sidebar.js') }}"></script>
-    <script src="{{ asset('js/carColor.js') }}"></script>
-
-
+    @livewireScripts
+    <script src="{{asset('js/sidebar.js')}}"></script>
+    <script src="{{asset('js/carColor.js')}}"></script>
 </body>
 
 </html>

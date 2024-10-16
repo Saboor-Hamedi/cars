@@ -1,0 +1,8 @@
+.form__container {
+    margin: auto;
+    max-width: 800px;
+}
+
+.editor-statusbar {
+    display: none !important;
+}
