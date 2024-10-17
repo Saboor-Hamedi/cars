@@ -11,6 +11,11 @@ class Content extends Component
 {
     use WithPagination;
 
+    public function toEdit($id)
+    {
+        return redirect()->route('cars.edit', ['id' => $id]);
+    }
+
     public function render()
     {
         $cars = Car::with(['user.profile'])->latest()->where('user_id', Auth::id())->paginate(3);

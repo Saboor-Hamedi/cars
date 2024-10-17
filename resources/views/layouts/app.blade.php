@@ -13,10 +13,9 @@
     <link rel="stylesheet" href="{{asset('css/files.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
     <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
-    @livewireStyles
+
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
 </head>
 
 <body>
@@ -35,7 +34,6 @@
         @endif
         {{ $slot }}
     </main>
-    @livewireScripts
     <script src="{{asset('js/sidebar.js')}}"></script>
     <script src="{{asset('js/carColor.js')}}"></script>
 </body>

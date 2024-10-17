@@ -13,9 +13,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
     <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
-    @livewireStyles
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
 </head>
 </head>
 
@@ -23,7 +21,6 @@
     <main>
         {{ $slot }}
     </main>
-    @livewireScripts
     <script src="{{ asset('js/chatbox.js') }}" defer></script>
 </body>
 

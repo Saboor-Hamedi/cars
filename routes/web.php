@@ -3,6 +3,7 @@
 use App\Http\Controllers\cars\CarController;
 use App\Http\Controllers\FrontController;
 use App\Livewire\Cars\CreateCars;
+use App\Livewire\Cars\EditPost;
 use App\Livewire\Users\Profile;
 use App\Livewire\Vote\Vote;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +16,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/cars', CreateCars::class)->name('cars.create-cars');
     Route::get('/users', Profile::class)->name('users.profile');
     Route::get('/vote', Vote::class)->name('vote.vote');
+
+    Route::get('/cars/{id}/edit', EditPost::class)->name('cars.edit');
 });
 
 // contact

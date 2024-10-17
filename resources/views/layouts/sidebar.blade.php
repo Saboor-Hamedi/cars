@@ -7,7 +7,6 @@
         </svg>
     </div>
     <ul>
-
         {{-- create new car --}}
         <li>
             <x-nav-link :href="route('cars.create-cars')" :active="request()->routeIs('cars.create-cars')"

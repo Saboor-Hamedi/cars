@@ -48,6 +48,11 @@
                     </svg>
                     <span>{{ Str::limit($car->description, 30, '...') }}</span>
                 </div>
+                <div wire:ignore>
+                    @auth
+                    <button class="default-button" wire:click.prevent="toEdit({{$car->id}})">Edit</button>
+                    @endauth
+                </div>
             </div>
             <!-- Vote footer -->
             <div class="">
