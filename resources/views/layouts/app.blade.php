@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="{{asset('css/cards.css')}}">
     <link rel="stylesheet" href="{{asset('css/forms.css')}}">
     <link rel="stylesheet" href="{{asset('css/files.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
     @livewireStyles
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])

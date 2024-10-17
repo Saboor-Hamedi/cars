@@ -21,7 +21,7 @@
   // node_modules/nprogress/nprogress.js
   var require_nprogress = __commonJS({
     "node_modules/nprogress/nprogress.js"(exports, module) {
-      (function (root, factory) {
+      (function(root, factory) {
         if (typeof define === "function" && define.amd) {
           define(factory);
         } else if (typeof exports === "object") {
@@ -29,7 +29,7 @@
         } else {
           root.NProgress = factory();
         }
-      })(exports, function () {
+      })(exports, function() {
         var NProgress2 = {};
         NProgress2.version = "0.2.0";
         var Settings = NProgress2.settings = {
@@ -46,7 +46,7 @@
           parent: "body",
           template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
         };
-        NProgress2.configure = function (options) {
+        NProgress2.configure = function(options) {
           var key, value;
           for (key in options) {
             value = options[key];
@@ -56,13 +56,13 @@
           return this;
         };
         NProgress2.status = null;
-        NProgress2.set = function (n) {
+        NProgress2.set = function(n) {
           var started2 = NProgress2.isStarted();
           n = clamp2(n, Settings.minimum, 1);
           NProgress2.status = n === 1 ? null : n;
           var progress = NProgress2.render(!started2), bar = progress.querySelector(Settings.barSelector), speed = Settings.speed, ease = Settings.easing;
           progress.offsetWidth;
-          queue2(function (next) {
+          queue2(function(next) {
             if (Settings.positionUsing === "")
               Settings.positionUsing = NProgress2.getPositioningCSS();
             css(bar, barPositionCSS(n, speed, ease));
@@ -72,12 +72,12 @@
                 opacity: 1
               });
               progress.offsetWidth;
-              setTimeout(function () {
+              setTimeout(function() {
                 css(progress, {
                   transition: "all " + speed + "ms linear",
                   opacity: 0
                 });
-                setTimeout(function () {
+                setTimeout(function() {
                   NProgress2.remove();
                   next();
                 }, speed);
@@ -88,14 +88,14 @@
           });
           return this;
         };
-        NProgress2.isStarted = function () {
+        NProgress2.isStarted = function() {
           return typeof NProgress2.status === "number";
         };
-        NProgress2.start = function () {
+        NProgress2.start = function() {
           if (!NProgress2.status)
             NProgress2.set(0);
-          var work = function () {
-            setTimeout(function () {
+          var work = function() {
+            setTimeout(function() {
               if (!NProgress2.status)
                 return;
               NProgress2.trickle();
@@ -106,12 +106,12 @@
             work();
           return this;
         };
-        NProgress2.done = function (force) {
+        NProgress2.done = function(force) {
           if (!force && !NProgress2.status)
             return this;
           return NProgress2.inc(0.3 + 0.5 * Math.random()).set(1);
         };
-        NProgress2.inc = function (amount) {
+        NProgress2.inc = function(amount) {
           var n = NProgress2.status;
           if (!n) {
             return NProgress2.start();
@@ -123,12 +123,12 @@
             return NProgress2.set(n);
           }
         };
-        NProgress2.trickle = function () {
+        NProgress2.trickle = function() {
           return NProgress2.inc(Math.random() * Settings.trickleRate);
         };
-        (function () {
+        (function() {
           var initial = 0, current = 0;
-          NProgress2.promise = function ($promise) {
+          NProgress2.promise = function($promise) {
             if (!$promise || $promise.state() === "resolved") {
               return this;
             }
@@ -137,7 +137,7 @@
             }
             initial++;
             current++;
-            $promise.always(function () {
+            $promise.always(function() {
               current--;
               if (current === 0) {
                 initial = 0;
@@ -149,7 +149,7 @@
             return this;
           };
         })();
-        NProgress2.render = function (fromStart) {
+        NProgress2.render = function(fromStart) {
           if (NProgress2.isRendered())
             return document.getElementById("nprogress");
           addClass(document.documentElement, "nprogress-busy");
@@ -171,16 +171,16 @@
           parent.appendChild(progress);
           return progress;
         };
-        NProgress2.remove = function () {
+        NProgress2.remove = function() {
           removeClass(document.documentElement, "nprogress-busy");
           removeClass(document.querySelector(Settings.parent), "nprogress-custom-parent");
           var progress = document.getElementById("nprogress");
           progress && removeElement(progress);
         };
-        NProgress2.isRendered = function () {
+        NProgress2.isRendered = function() {
           return !!document.getElementById("nprogress");
         };
-        NProgress2.getPositioningCSS = function () {
+        NProgress2.getPositioningCSS = function() {
           var bodyStyle = document.body.style;
           var vendorPrefix = "WebkitTransform" in bodyStyle ? "Webkit" : "MozTransform" in bodyStyle ? "Moz" : "msTransform" in bodyStyle ? "ms" : "OTransform" in bodyStyle ? "O" : "";
           if (vendorPrefix + "Perspective" in bodyStyle) {
@@ -213,7 +213,7 @@
           barCSS.transition = "all " + speed + "ms " + ease;
           return barCSS;
         }
-        var queue2 = function () {
+        var queue2 = function() {
           var pending = [];
           function next() {
             var fn = pending.shift();
@@ -221,16 +221,16 @@
               fn(next);
             }
           }
-          return function (fn) {
+          return function(fn) {
             pending.push(fn);
             if (pending.length == 1)
               next();
           };
         }();
-        var css = function () {
+        var css = function() {
           var cssPrefixes = ["Webkit", "O", "Moz", "ms"], cssProps = {};
           function camelCase3(string) {
-            return string.replace(/^-ms-/, "ms-").replace(/-([\da-z])/gi, function (match, letter) {
+            return string.replace(/^-ms-/, "ms-").replace(/-([\da-z])/gi, function(match, letter) {
               return letter.toUpperCase();
             });
           }
@@ -254,7 +254,7 @@
             prop = getStyleProp(prop);
             element.style[prop] = value;
           }
-          return function (element, properties2) {
+          return function(element, properties2) {
             var args = arguments, prop, value;
             if (args.length == 2) {
               for (prop in properties2) {
@@ -760,15 +760,13 @@
   function setReactivityEngine(engine) {
     reactive = engine.reactive;
     release = engine.release;
-    effect = (callback) => engine.effect(callback, {
-      scheduler: (task) => {
-        if (shouldSchedule) {
-          scheduler(task);
-        } else {
-          task();
-        }
+    effect = (callback) => engine.effect(callback, { scheduler: (task) => {
+      if (shouldSchedule) {
+        scheduler(task);
+      } else {
+        task();
       }
-    });
+    } });
     raw = engine.raw;
   }
   function overrideEffect(override) {
@@ -1165,7 +1163,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     if (evaluatorMemo[expression]) {
       return evaluatorMemo[expression];
     }
-    let AsyncFunction = Object.getPrototypeOf(async function () {
+    let AsyncFunction = Object.getPrototypeOf(async function() {
     }).constructor;
     let rightSideSafeExpression = /^[\n\s]*if.*\(.*\)/.test(expression.trim()) || /^(let|const)\s/.test(expression.trim()) ? `(async()=>{ ${expression} })()` : expression;
     const safeAsyncFunction = () => {
@@ -1610,7 +1608,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
   function once(callback, fallback2 = () => {
   }) {
     let called = false;
-    return function () {
+    return function() {
       if (!called) {
         called = true;
         callback.apply(this, arguments);
@@ -1736,7 +1734,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
         }
       };
   }
-  window.Element.prototype._x_toggleAndCascadeWithTransitions = function (el, value, show, hide) {
+  window.Element.prototype._x_toggleAndCascadeWithTransitions = function(el, value, show, hide) {
     const nextTick2 = document.visibilityState === "visible" ? requestAnimationFrame : setTimeout;
     let clickAwayCompatibleShow = () => nextTick2(show);
     if (value) {
@@ -1835,7 +1833,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       beforeCancel(callback) {
         this.beforeCancels.push(callback);
       },
-      cancel: once(function () {
+      cancel: once(function() {
         while (this.beforeCancels.length) {
           this.beforeCancels.shift()();
         }
@@ -1977,7 +1975,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     }
   }
   function bindInputValue(el, value) {
-    if (el.type === "radio") {
+    if (isRadio(el)) {
       if (el.attributes.value === void 0) {
         el.value = value;
       }
@@ -1988,7 +1986,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
           el.checked = checkedAttrLooseCompare(el.value, value);
         }
       }
-    } else if (el.type === "checkbox") {
+    } else if (isCheckbox(el)) {
       if (Number.isInteger(value)) {
         el.value = value;
       } else if (!Array.isArray(value) && typeof value !== "boolean" && ![null, void 0].includes(value)) {
@@ -2127,11 +2125,17 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     }
     return attr;
   }
+  function isCheckbox(el) {
+    return el.type === "checkbox" || el.localName === "ui-checkbox" || el.localName === "ui-switch";
+  }
+  function isRadio(el) {
+    return el.type === "radio" || el.localName === "ui-radio";
+  }
   function debounce(func, wait) {
     var timeout;
-    return function () {
+    return function() {
       var context = this, args = arguments;
-      var later = function () {
+      var later = function() {
         timeout = null;
         func.apply(context, args);
       };
@@ -2141,7 +2145,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
   }
   function throttle(func, limit) {
     let inThrottle;
-    return function () {
+    return function() {
       let context = this, args = arguments;
       if (!inThrottle) {
         func.apply(context, args);
@@ -2280,7 +2284,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     get raw() {
       return raw;
     },
-    version: "3.14.1",
+    version: "3.14.3",
     flushAndStopDeferringMutations,
     dontAutoEvaluateFunctions,
     disableEffectScheduling,
@@ -2560,7 +2564,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
   function createArrayInstrumentations() {
     const instrumentations = {};
     ["includes", "indexOf", "lastIndexOf"].forEach((key) => {
-      instrumentations[key] = function (...args) {
+      instrumentations[key] = function(...args) {
         const arr = toRaw(this);
         for (let i = 0, l = this.length; i < l; i++) {
           track(arr, "get", i + "");
@@ -2574,7 +2578,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       };
     });
     ["push", "pop", "shift", "unshift", "splice"].forEach((key) => {
-      instrumentations[key] = function (...args) {
+      instrumentations[key] = function(...args) {
         pauseTracking();
         const res = toRaw(this)[key].apply(this, args);
         resetTracking();
@@ -2790,7 +2794,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     };
   }
   function createIterableMethod(method, isReadonly, isShallow) {
-    return function (...args) {
+    return function(...args) {
       const target = this["__v_raw"];
       const rawTarget = toRaw(target);
       const targetIsMap = isMap(rawTarget);
@@ -2814,7 +2818,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     };
   }
   function createReadonlyMethod(type) {
-    return function (...args) {
+    return function(...args) {
       if (true) {
         const key = args[0] ? `on key "${args[0]}" ` : ``;
         console.warn(`${capitalize(type)} operation ${key}failed: target is readonly.`, toRaw(this));
@@ -3363,7 +3367,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       setValue(getInputValue(el, modifiers, e, getValue()));
     });
     if (modifiers.includes("fill")) {
-      if ([void 0, null, ""].includes(getValue()) || el.type === "checkbox" && Array.isArray(getValue()) || el.tagName.toLowerCase() === "select" && el.multiple) {
+      if ([void 0, null, ""].includes(getValue()) || isCheckbox(el) && Array.isArray(getValue()) || el.tagName.toLowerCase() === "select" && el.multiple) {
         setValue(getInputValue(el, modifiers, { target: el }, getValue()));
       }
     }
@@ -3403,7 +3407,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     return mutateDom(() => {
       if (event instanceof CustomEvent && event.detail !== void 0)
         return event.detail !== null && event.detail !== void 0 ? event.detail : event.target.value;
-      else if (el.type === "checkbox") {
+      else if (isCheckbox(el)) {
         if (Array.isArray(currentValue)) {
           let newValue = null;
           if (modifiers.includes("number")) {
@@ -3434,7 +3438,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
         });
       } else {
         let newValue;
-        if (el.type === "radio") {
+        if (isRadio(el)) {
           if (event.target.checked) {
             newValue = event.target.value;
           } else {
@@ -4865,11 +4869,11 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
   var candidateSelectors = ["input", "select", "textarea", "a[href]", "button", "[tabindex]:not(slot)", "audio[controls]", "video[controls]", '[contenteditable]:not([contenteditable="false"])', "details>summary:first-of-type", "details"];
   var candidateSelector = /* @__PURE__ */ candidateSelectors.join(",");
   var NoElement = typeof Element === "undefined";
-  var matches = NoElement ? function () {
+  var matches = NoElement ? function() {
   } : Element.prototype.matches || Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
-  var getRootNode = !NoElement && Element.prototype.getRootNode ? function (element) {
+  var getRootNode = !NoElement && Element.prototype.getRootNode ? function(element) {
     return element.getRootNode();
-  } : function (element) {
+  } : function(element) {
     return element.ownerDocument;
   };
   var getCandidates = function getCandidates2(el, includeContainer, filter) {
@@ -4939,7 +4943,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     return isInput(node) && node.type === "hidden";
   };
   var isDetailsWithSummary = function isDetailsWithSummary2(node) {
-    var r = node.tagName === "DETAILS" && Array.prototype.slice.apply(node.children).some(function (child) {
+    var r = node.tagName === "DETAILS" && Array.prototype.slice.apply(node.children).some(function(child) {
       return child.tagName === "SUMMARY";
     });
     return r;
@@ -4973,11 +4977,11 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     var checked = getCheckedRadio(radioSet, node.form);
     return !checked || checked === node;
   };
-  var isRadio = function isRadio2(node) {
+  var isRadio2 = function isRadio22(node) {
     return isInput(node) && node.type === "radio";
   };
   var isNonTabbableRadio = function isNonTabbableRadio2(node) {
-    return isRadio(node) && !isTabbableRadio(node);
+    return isRadio2(node) && !isTabbableRadio(node);
   };
   var isZeroArea = function isZeroArea2(node) {
     var _node$getBoundingClie = node.getBoundingClientRect(), width = _node$getBoundingClie.width, height = _node$getBoundingClie.height;
@@ -5061,7 +5065,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
   var sortByOrder = function sortByOrder2(candidates) {
     var regularTabbables = [];
     var orderedTabbables = [];
-    candidates.forEach(function (item, i) {
+    candidates.forEach(function(item, i) {
       var isScope = !!item.scope;
       var element = isScope ? item.scope : item;
       var candidateTabindex = getTabindex(element, isScope);
@@ -5078,7 +5082,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
         });
       }
     });
-    return orderedTabbables.sort(sortOrderedTabbables).reduce(function (acc, sortable) {
+    return orderedTabbables.sort(sortOrderedTabbables).reduce(function(acc, sortable) {
       sortable.isScope ? acc.push.apply(acc, sortable.content) : acc.push(sortable.content);
       return acc;
     }, []).concat(regularTabbables);
@@ -5137,7 +5141,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     var keys = Object.keys(object);
     if (Object.getOwnPropertySymbols) {
       var symbols = Object.getOwnPropertySymbols(object);
-      enumerableOnly && (symbols = symbols.filter(function (sym) {
+      enumerableOnly && (symbols = symbols.filter(function(sym) {
         return Object.getOwnPropertyDescriptor(object, sym).enumerable;
       })), keys.push.apply(keys, symbols);
     }
@@ -5146,9 +5150,9 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
   function _objectSpread2(target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = null != arguments[i] ? arguments[i] : {};
-      i % 2 ? ownKeys2(Object(source), true).forEach(function (key) {
+      i % 2 ? ownKeys2(Object(source), true).forEach(function(key) {
         _defineProperty(target, key, source[key]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys2(Object(source)).forEach(function (key) {
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys2(Object(source)).forEach(function(key) {
         Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
       });
     }
@@ -5167,7 +5171,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     }
     return obj;
   }
-  var activeFocusTraps = function () {
+  var activeFocusTraps = function() {
     var trapQueue = [];
     return {
       activateTrap: function activateTrap(trap) {
@@ -5210,7 +5214,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
   };
   var findIndex = function findIndex2(arr, fn) {
     var idx = -1;
-    arr.every(function (value, i) {
+    arr.every(function(value, i) {
       if (fn(value)) {
         idx = i;
         return false;
@@ -5250,9 +5254,9 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       return configOverrideOptions && configOverrideOptions[optionName] !== void 0 ? configOverrideOptions[optionName] : config[configOptionName || optionName];
     };
     var findContainerIndex = function findContainerIndex2(element) {
-      return state.containerGroups.findIndex(function (_ref) {
+      return state.containerGroups.findIndex(function(_ref) {
         var container = _ref.container, tabbableNodes = _ref.tabbableNodes;
-        return container.contains(element) || tabbableNodes.find(function (node) {
+        return container.contains(element) || tabbableNodes.find(function(node) {
           return node === element;
         });
       });
@@ -5303,7 +5307,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       return node;
     };
     var updateTabbableNodes = function updateTabbableNodes2() {
-      state.containerGroups = state.containers.map(function (container) {
+      state.containerGroups = state.containers.map(function(container) {
         var tabbableNodes = tabbable(container, config.tabbableOptions);
         var focusableNodes = focusable(container, config.tabbableOptions);
         return {
@@ -5314,24 +5318,24 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
           lastTabbableNode: tabbableNodes.length > 0 ? tabbableNodes[tabbableNodes.length - 1] : null,
           nextTabbableNode: function nextTabbableNode(node) {
             var forward = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : true;
-            var nodeIdx = focusableNodes.findIndex(function (n) {
+            var nodeIdx = focusableNodes.findIndex(function(n) {
               return n === node;
             });
             if (nodeIdx < 0) {
               return void 0;
             }
             if (forward) {
-              return focusableNodes.slice(nodeIdx + 1).find(function (n) {
+              return focusableNodes.slice(nodeIdx + 1).find(function(n) {
                 return isTabbable(n, config.tabbableOptions);
               });
             }
-            return focusableNodes.slice(0, nodeIdx).reverse().find(function (n) {
+            return focusableNodes.slice(0, nodeIdx).reverse().find(function(n) {
               return isTabbable(n, config.tabbableOptions);
             });
           }
         };
       });
-      state.tabbableGroups = state.containerGroups.filter(function (group) {
+      state.tabbableGroups = state.containerGroups.filter(function(group) {
         return group.tabbableNodes.length > 0;
       });
       if (state.tabbableGroups.length <= 0 && !getNodeForOption("fallbackFocus")) {
@@ -5403,7 +5407,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
             destinationNode = state.tabbableGroups[0].firstTabbableNode;
           }
         } else if (e.shiftKey) {
-          var startOfGroupIndex = findIndex(state.tabbableGroups, function (_ref2) {
+          var startOfGroupIndex = findIndex(state.tabbableGroups, function(_ref2) {
             var firstTabbableNode = _ref2.firstTabbableNode;
             return target === firstTabbableNode;
           });
@@ -5416,7 +5420,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
             destinationNode = destinationGroup.lastTabbableNode;
           }
         } else {
-          var lastOfGroupIndex = findIndex(state.tabbableGroups, function (_ref3) {
+          var lastOfGroupIndex = findIndex(state.tabbableGroups, function(_ref3) {
             var lastTabbableNode = _ref3.lastTabbableNode;
             return target === lastTabbableNode;
           });
@@ -5467,7 +5471,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
         return;
       }
       activeFocusTraps.activateTrap(trap);
-      state.delayInitialFocusTimer = config.delayInitialFocus ? delay(function () {
+      state.delayInitialFocusTimer = config.delayInitialFocus ? delay(function() {
         tryFocus(getInitialFocusNode());
       }) : tryFocus(getInitialFocusNode());
       doc.addEventListener("focusin", checkFocusIn, true);
@@ -5562,7 +5566,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
           onDeactivate();
         }
         var finishDeactivation = function finishDeactivation2() {
-          delay(function () {
+          delay(function() {
             if (returnFocus) {
               tryFocus(getReturnFocusNode(state.nodeFocusedBeforeActivation));
             }
@@ -5597,7 +5601,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       },
       updateContainerElements: function updateContainerElements(containerElements) {
         var elementsAsArray = [].concat(containerElements).filter(Boolean);
-        state.containers = elementsAsArray.map(function (element) {
+        state.containers = elementsAsArray.map(function(element) {
           return typeof element === "string" ? doc.querySelector(element) : element;
         });
         if (state.active) {
@@ -6286,7 +6290,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       right: (elementClientRect.right - clippingClientRect.right + paddingObject.right) / offsetScale.x
     };
   }
-  var flip = function (options) {
+  var flip = function(options) {
     if (options === void 0) {
       options = {};
     }
@@ -6402,11 +6406,11 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       crossAxis: 0,
       alignmentAxis: null
     } : {
-        mainAxis: 0,
-        crossAxis: 0,
-        alignmentAxis: null,
-        ...rawValue
-      };
+      mainAxis: 0,
+      crossAxis: 0,
+      alignmentAxis: null,
+      ...rawValue
+    };
     if (alignment && typeof alignmentAxis === "number") {
       crossAxis = alignment === "end" ? alignmentAxis * -1 : alignmentAxis;
     }
@@ -6418,7 +6422,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       y: crossAxis * crossAxisMulti
     };
   }
-  var offset = function (options) {
+  var offset = function(options) {
     if (options === void 0) {
       options = 0;
     }
@@ -6439,7 +6443,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       }
     };
   };
-  var shift = function (options) {
+  var shift = function(options) {
     if (options === void 0) {
       options = {};
     }
@@ -6965,7 +6969,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     }
     return offsetParent || getContainingBlock(element) || window2;
   }
-  var getElementRects = async function (_ref) {
+  var getElementRects = async function(_ref) {
     let {
       reference,
       floating,
@@ -7397,10 +7401,8 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     let uri = getUriStringFromUrlObject(destination);
     if (prefetches[uri])
       return;
-    prefetches[uri] = {
-      finished: false, html: null, whenFinished: () => {
-      }
-    };
+    prefetches[uri] = { finished: false, html: null, whenFinished: () => {
+    } };
     performFetch(uri, (html, routedUri) => {
       callback(html, routedUri);
     });
@@ -7629,6 +7631,44 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     document.head.appendChild(style);
   }
 
+  // js/plugins/navigate/popover.js
+  function packUpPersistedPopovers(persistedEl) {
+    persistedEl.querySelectorAll(":popover-open").forEach((el) => {
+      el.setAttribute("data-navigate-popover-open", "");
+      let animations = el.getAnimations();
+      el._pausedAnimations = animations.map((animation) => ({
+        keyframes: animation.effect.getKeyframes(),
+        options: {
+          duration: animation.effect.getTiming().duration,
+          easing: animation.effect.getTiming().easing,
+          fill: animation.effect.getTiming().fill,
+          iterations: animation.effect.getTiming().iterations
+        },
+        currentTime: animation.currentTime,
+        playState: animation.playState
+      }));
+      animations.forEach((i) => i.pause());
+    });
+  }
+  function unPackPersistedPopovers(persistedEl) {
+    persistedEl.querySelectorAll("[data-navigate-popover-open]").forEach((el) => {
+      el.removeAttribute("data-navigate-popover-open");
+      queueMicrotask(() => {
+        if (!el.isConnected)
+          return;
+        el.showPopover();
+        el.getAnimations().forEach((i) => i.finish());
+        if (el._pausedAnimations) {
+          el._pausedAnimations.forEach(({ keyframes, options, currentTime, now, playState }) => {
+            let animation = el.animate(keyframes, options);
+            animation.currentTime = currentTime;
+          });
+          delete el._pausedAnimations;
+        }
+      });
+    });
+  }
+
   // js/plugins/navigate/page.js
   var oldBodyScriptTagHashes = [];
   var attributesExemptFromScriptTagHashing = [
@@ -7767,7 +7807,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
   function navigate_default(Alpine3) {
     Alpine3.navigate = (url) => {
       let destination = createUrlObjectFromString(url);
-      let prevented = fireEventForOtherLibariesToHookInto("alpine:navigate", {
+      let prevented = fireEventForOtherLibrariesToHookInto("alpine:navigate", {
         url: destination,
         history: false,
         cached: false
@@ -7798,7 +7838,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
           storeThePrefetchedHtmlForWhenALinkIsClicked(html, destination, finalDestination);
         });
         whenItIsReleased(() => {
-          let prevented = fireEventForOtherLibariesToHookInto("alpine:navigate", {
+          let prevented = fireEventForOtherLibrariesToHookInto("alpine:navigate", {
             url: destination,
             history: false,
             cached: false
@@ -7812,7 +7852,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     function navigateTo(destination, shouldPushToHistoryState = true) {
       showProgressBar && showAndStartProgressBar();
       fetchHtmlOrUsePrefetchedHtml(destination, (html, finalDestination) => {
-        fireEventForOtherLibariesToHookInto("alpine:navigating");
+        fireEventForOtherLibrariesToHookInto("alpine:navigating");
         restoreScroll && storeScrollInformationInHtmlBeforeNavigatingAway();
         showProgressBar && finishAndHideProgressBar();
         cleanupAlpineElementsOnThePageThatArentInsideAPersistedElement();
@@ -7820,6 +7860,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
         preventAlpineFromPickingUpDomChanges(Alpine3, (andAfterAllThis) => {
           enablePersist && storePersistantElementsForLater((persistedEl) => {
             packUpPersistedTeleports(persistedEl);
+            packUpPersistedPopovers(persistedEl);
           });
           if (shouldPushToHistoryState) {
             updateUrlAndStoreLatestHtmlForFutureBackButtons(html, finalDestination);
@@ -7830,6 +7871,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
             removeAnyLeftOverStaleTeleportTargets(document.body);
             enablePersist && putPersistantElementsBack((persistedEl, newStub) => {
               unPackPersistedTeleports(persistedEl);
+              unPackPersistedPopovers(persistedEl);
             });
             restoreScrollPositionOrScrollToTop();
             afterNewScriptsAreDoneLoading(() => {
@@ -7838,7 +7880,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
                   autofocus && autofocusElementsWithTheAutofocusAttribute();
                 });
                 nowInitializeAlpineOnTheNewPage(Alpine3);
-                fireEventForOtherLibariesToHookInto("alpine:navigated");
+                fireEventForOtherLibrariesToHookInto("alpine:navigated");
               });
             });
           });
@@ -7848,7 +7890,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     whenTheBackOrForwardButtonIsClicked((ifThePageBeingVisitedHasntBeenCached) => {
       ifThePageBeingVisitedHasntBeenCached((url) => {
         let destination = createUrlObjectFromString(url);
-        let prevented = fireEventForOtherLibariesToHookInto("alpine:navigate", {
+        let prevented = fireEventForOtherLibrariesToHookInto("alpine:navigate", {
           url: destination,
           history: true,
           cached: false
@@ -7860,7 +7902,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       });
     }, (html, url, currentPageUrl, currentPageKey) => {
       let destination = createUrlObjectFromString(url);
-      let prevented = fireEventForOtherLibariesToHookInto("alpine:navigate", {
+      let prevented = fireEventForOtherLibrariesToHookInto("alpine:navigate", {
         url: destination,
         history: true,
         cached: true
@@ -7868,29 +7910,31 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       if (prevented)
         return;
       storeScrollInformationInHtmlBeforeNavigatingAway();
-      fireEventForOtherLibariesToHookInto("alpine:navigating");
+      fireEventForOtherLibrariesToHookInto("alpine:navigating");
       updateCurrentPageHtmlInSnapshotCacheForLaterBackButtonClicks(currentPageUrl, currentPageKey);
       preventAlpineFromPickingUpDomChanges(Alpine3, (andAfterAllThis) => {
         enablePersist && storePersistantElementsForLater((persistedEl) => {
           packUpPersistedTeleports(persistedEl);
+          packUpPersistedPopovers(persistedEl);
         });
         swapCurrentPageWithNewHtml(html, () => {
           removeAnyLeftOverStaleProgressBars();
           removeAnyLeftOverStaleTeleportTargets(document.body);
           enablePersist && putPersistantElementsBack((persistedEl, newStub) => {
             unPackPersistedTeleports(persistedEl);
+            unPackPersistedPopovers(persistedEl);
           });
           restoreScrollPositionOrScrollToTop();
           andAfterAllThis(() => {
             autofocus && autofocusElementsWithTheAutofocusAttribute();
             nowInitializeAlpineOnTheNewPage(Alpine3);
-            fireEventForOtherLibariesToHookInto("alpine:navigated");
+            fireEventForOtherLibrariesToHookInto("alpine:navigated");
           });
         });
       });
     });
     setTimeout(() => {
-      fireEventForOtherLibariesToHookInto("alpine:navigated");
+      fireEventForOtherLibrariesToHookInto("alpine:navigated");
     });
   }
   function fetchHtmlOrUsePrefetchedHtml(fromDestination, callback) {
@@ -7907,7 +7951,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       });
     });
   }
-  function fireEventForOtherLibariesToHookInto(name, detail) {
+  function fireEventForOtherLibrariesToHookInto(name, detail) {
     let event = new CustomEvent(name, {
       cancelable: true,
       bubbles: true,
@@ -7926,7 +7970,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     document.querySelector("[autofocus]") && document.querySelector("[autofocus]").focus();
   }
   function cleanupAlpineElementsOnThePageThatArentInsideAPersistedElement() {
-    let walker = function (root, callback) {
+    let walker = function(root, callback) {
       Alpine.walk(root, (el, skip) => {
         if (isPersistedElement(el))
           skip();
@@ -8216,8 +8260,6 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       let toAttributes = Array.from(to.attributes);
       for (let i = domAttributes.length - 1; i >= 0; i--) {
         let name = domAttributes[i].name;
-        if (name === "style")
-          continue;
         if (!to.hasAttribute(name)) {
           from2.removeAttribute(name);
         }
@@ -8225,8 +8267,6 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       for (let i = toAttributes.length - 1; i >= 0; i--) {
         let name = toAttributes[i].name;
         let value = toAttributes[i].value;
-        if (name === "style")
-          continue;
         if (from2.getAttribute(name) !== value) {
           from2.setAttribute(name, value);
         }
@@ -8494,12 +8534,10 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
               Alpine3.dontAutoEvaluateFunctions(() => {
                 evaluator((value2) => {
                   result = typeof value2 === "function" ? value2(input) : value2;
-                }, {
-                  scope: {
-                    "$input": input,
-                    "$money": formatMoney.bind({ el })
-                  }
-                });
+                }, { scope: {
+                  "$input": input,
+                  "$money": formatMoney.bind({ el })
+                } });
               });
               return result;
             };
@@ -8673,11 +8711,9 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
         if (!matchesForLivewireDirective(attribute.name))
           return;
         let directive3 = extractDirective(el, attribute.name);
-        trigger2("directive.init", {
-          el, component, directive: directive3, cleanup: (callback) => {
-            module_default.onAttributeRemoved(el, directive3.raw, callback);
-          }
-        });
+        trigger2("directive.init", { el, component, directive: directive3, cleanup: (callback) => {
+          module_default.onAttributeRemoved(el, directive3.raw, callback);
+        } });
       });
     });
     module_default.interceptInit(module_default.skipDuringClone((el) => {
@@ -8694,11 +8730,9 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
         trigger2("element.init", { el, component });
         let directives2 = Array.from(el.getAttributeNames()).filter((name) => matchesForLivewireDirective(name)).map((name) => extractDirective(el, name));
         directives2.forEach((directive3) => {
-          trigger2("directive.init", {
-            el, component, directive: directive3, cleanup: (callback) => {
-              module_default.onAttributeRemoved(el, directive3.raw, callback);
-            }
-          });
+          trigger2("directive.init", { el, component, directive: directive3, cleanup: (callback) => {
+            module_default.onAttributeRemoved(el, directive3.raw, callback);
+          } });
         });
       }
     }));
@@ -8924,6 +8958,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       },
       lookahead: false
     });
+    trigger2("morphed", { el, component });
   }
   function isntElement(el) {
     return typeof el.hasAttribute !== "function";
@@ -9102,7 +9137,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       invisibleLink.download = download.name;
       document.body.appendChild(invisibleLink);
       invisibleLink.click();
-      setTimeout(function () {
+      setTimeout(function() {
         urlObject.revokeObjectURL(url);
       }, 0);
     });
@@ -9811,9 +9846,9 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
   }
   function debounce2(func, wait) {
     var timeout;
-    return function () {
+    return function() {
       var context = this, args = arguments;
-      var later = function () {
+      var later = function() {
         timeout = null;
         func.apply(context, args);
       };

@@ -9,9 +9,9 @@
         <div class="max-w-md mx-auto rounded-lg shadow-md bg-white-300">
             <div class="p-4 text-gray-900">
                 @if (session()->has('message'))
-                    <div class="relative px-4 py-3 text-red-700 bg-red-100 border border-red-400 rounded" role="alert">
-                        {{ session('message') }}
-                    </div>
+                <div class="relative px-4 py-3 text-red-700 bg-red-100 border border-red-400 rounded" role="alert">
+                    {{ session('message') }}
+                </div>
                 @endif
                 <form wire:submit.prevent='update'>
                     <div class="mt-2">
@@ -34,14 +34,11 @@
                     </div>
                     {{-- display photo here --}}
                     <div class="flex justify-start mt-3">
-                        {{-- <img id="image-preview" src="{{ $photo ? asset('storage/' . $photo) : '' }}"
-                            class="custom-circle-image"> --}}
-
                         @if ($photo)
-                            <img id="image-preview" src="{{ $photo->temporaryUrl() }}" class="custom-circle-image">
+                        <img id="image-preview" src="{{ $photo->temporaryUrl() }}" class="custom-circle-image">
                         @else
-                            <img id="image-preview" src="{{ $photoPath ? asset('storage/' . $photoPath) : '' }}"
-                                class="custom-circle-image">
+                        <img id="image-preview" src="{{ $photoPath ? asset('storage/' . $photoPath) : '' }}"
+                            class="custom-circle-image">
                         @endif
                     </div>
 

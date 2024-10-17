@@ -18,7 +18,9 @@
         "livewire/livewire": "^3.5",
         "livewire/volt": "^1.0",
         "mews/purifier": "*",
-        "nette/mail": "^4.0"
+        "nette/mail": "^4.0",
+        "spatie/laravel-permission": "^6.9",
+        "spatie/shiki-php": "^2.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.13",
