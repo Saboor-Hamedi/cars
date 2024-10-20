@@ -9,27 +9,33 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ResetPassword extends Mailable
+class PasswordResetMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $token;
+
+    public $verification_code;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($token)
+    public function __construct($verification_code)
     {
-        $this->token = $token;
-        //
+        $this->verification_code = $verification_code;
     }
 
+
+    public function build()
+    {
+        return $this->view('emails.password_reset')
+            ->with(['verification_code' => $this->verification_code]);
+    }
     /**
      * Get the message envelope.
      */
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Reset Password',
+            subject: 'Password Reset Mail',
         );
     }
 
@@ -39,7 +45,7 @@ class ResetPassword extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.password_reset',
         );
     }
 

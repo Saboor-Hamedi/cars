@@ -1,5 +1,5 @@
 <div>
-
+    {{-- Users can change password after logged in --}}
     <div class="flex items-center justify-center min-h-screen bg-gray-100">
         <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
             @if (session()->has('message'))

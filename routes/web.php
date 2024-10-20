@@ -5,6 +5,7 @@ use App\Http\Controllers\FrontController;
 use App\Livewire\Cars\CreateCars;
 use App\Livewire\Cars\EditPost;
 use App\Livewire\Password\ChangePassword;
+use App\Livewire\Password\ForgotPassword;
 use App\Livewire\Users\Profile;
 use App\Livewire\Vote\Vote;
 use Illuminate\Support\Facades\Route;
@@ -45,8 +46,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-
-
+Route::get('/password.forgot-password', ForgotPassword::class)->name('password.forgot-password');
 
 
 require __DIR__ . '/auth.php';
