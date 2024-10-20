@@ -57,16 +57,14 @@ new #[Layout('layouts.guest')] class extends Component {
 
         <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
-                <a class="text-sm text-gray-600 underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    href="{{ route('password.request') }}" wire:navigate>
-                    {{ __('Forgot your password?') }}
-                </a>
+            <a class="text-sm text-gray-600 underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                href="{{ route('password.request') }}" wire:navigate>
+                {{ __('Forgot your password?') }}
+            </a>
             @endif
 
-
-            {{-- <button
-                class="ms-3 bg-[#c13584] rounded-md text-white cursor-pointer p-1 shadow-md">{{ __('Log in') }}</button> --}}
-
+            {{-- <button class="ms-3 bg-[#c13584] rounded-md text-white cursor-pointer p-1 shadow-md">{{ __('Log in')
+                }}</button> --}}
 
             <x-primary-button class="ms-3 bg-[#c13584]">
                 {{ __('Log in') }}

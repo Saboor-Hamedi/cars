@@ -91,6 +91,13 @@
                         </svg>
                         <span>{{ Str::limit($car->description, 30, '...') }}</span>
                     </div>
+                    <div wire:ignore>
+                        @auth
+                        <a href="{{route('cars.edit',[$car->id])}}" class="default-button" wire:ignore>Edit</a>
+
+                        {{-- <button class="default-button" wire:click.prevent="toEdit({{$car->id}})">Edit</button> --}}
+                        @endauth
+                    </div>
                 </div>
                 <!-- Vote footer -->
                 <div class="">

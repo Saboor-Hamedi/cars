@@ -55,7 +55,7 @@
                 </div>
             </div>
             <!-- Vote footer -->
-            <div class="">
+            <div>
                 @livewire('vote.vote', ['car' => $car])
             </div>
         </div>

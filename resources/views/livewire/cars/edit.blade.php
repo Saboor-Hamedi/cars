@@ -1,6 +1,6 @@
 <div>
     {{-- header --}}
-    @livewire('header')
+    {{-- @livewire('header') --}}
     {{-- edit cars/posts --}}
     <div class="form__container">
 

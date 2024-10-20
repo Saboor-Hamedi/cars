@@ -33,10 +33,6 @@ class EditPost extends Component
         $this->description = $this->car->description;
     }
 
-    public function toEdit($id)
-    {
-        dd($id);
-    }
     public function edit()
     {
         $this->validate();
@@ -59,11 +55,10 @@ class EditPost extends Component
 
         $this->car->update($data);
         session()->flash('message', "'{$this->name}' successfully updated");
-        // return $this->redirect('/');
     }
 
     public function render()
     {
-        return view('livewire.cars.edit')->layout('components.layout');
+        return view('livewire.cars.edit')->layout('layouts.app');
     }
 }
