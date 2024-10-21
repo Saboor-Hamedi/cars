@@ -2,7 +2,7 @@
     <div class="grid gap-2 p-5 post__section sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         @foreach ($cars as $car)
         <div
-            class="overflow-hidden transition duration-300 ease-in-out transform bg-white rounded-lg shadow-lg hover:-translate-y-1 hover:shadow-2xl">
+            class="overflow-hidden transition duration-300 ease-in-out transform bg-white rounded-lg shadow-md  hover:shadow-lg">
             <!-- Post image -->
             <div class="relative h-48 bg-center bg-cover"
                 style="background-image: url('{{ $car->image ? asset('storage/' . $car->image) : asset('storage/default/car3.png') }}');">
@@ -48,10 +48,29 @@
                     </svg>
                     <span>{{ Str::limit($car->description, 30, '...') }}</span>
                 </div>
-                <div wire:ignore>
+                <div class="flex flex-row gap-2 items-center" wire:ignore>
                     @auth
-                    <button class="default-button" wire:click.prevent="toEdit({{$car->id}})">Edit</button>
+                    <button class="default-button" wire:click.prevent="toEdit({{$car->id}})">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                        </svg>
+                    </button>
                     @endauth
+
+                    <div data-url="{{ route('show-profile', ['car' => $car->id]) }}">
+                        <h2>{{ $car->title }}</h2>
+                        <button class="p-1 text-xs cursor-pointer default-button"
+                            onclick="copyURL('{{ route('show-profile', ['car' => $car->id]) }}', this)">
+                            <svg id="copy-icon-{{ $car->id }}" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
+                            </svg>
+                            <span id="copy-tooltips" style="display:none">Copy the URL to clipboard</span>
+                        </button>
+                    </div>
                 </div>
             </div>
             <!-- Vote footer -->

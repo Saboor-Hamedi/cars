@@ -43,13 +43,6 @@ class ForgotPassword extends Component
     {
         $this->validate(['verification_code' => 'required|numeric']);
 
-        // if ($this->verification_code == $this->generated_code && Carbon::now()->lessThanOrEqualTo($this->code_expiration)) {
-        //     session()->flash('message', 'Verification code is valid. You can now reset your password.');
-        //     $this->verification_success = true;
-        // } else {
-        //     session()->flash('error', 'Invalid or expired verification code. Please try again.');
-        // }
-
         if (Carbon::now()->greaterThan($this->code_expiration)) {
             $this->code_expired = true;
             session()->flash('error', 'Verification code has expired. Please request a new code.');

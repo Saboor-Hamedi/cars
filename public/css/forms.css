@@ -3,8 +3,17 @@
     max-width: 800px;
 }
 
-/* .editor-statusbar {
-    display: none !important;
-} */
+/* add screen size */
+@media screen and (max-width: 876px) {
+    .form__container {
+        width: 100%;
+        padding: 15px;
+    }
+}
 
-/* custom editor */
+@media screen and (max-width: 600px) {
+    .form__container {
+        width: 100%;
+        padding: 10px;
+    }
+}

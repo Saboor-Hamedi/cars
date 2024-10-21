@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{asset('css/files.css')}}">
     <link rel="stylesheet" href="{{asset('css/easymde.min.css')}}">
     <script src="{{ asset('js/easymde.min.js') }}" defer></script>
-
+    <script src="{{ asset('js/copyPost.js') }}" defer></script>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
