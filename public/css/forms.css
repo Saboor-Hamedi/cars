@@ -1,6 +1,7 @@
 .form__container {
     margin: auto;
     max-width: 800px;
+    margin-top: 60px;
 }
 
 /* add screen size */

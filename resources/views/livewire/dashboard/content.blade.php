@@ -2,7 +2,7 @@
     <div class="grid gap-2 p-5 post__section sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         @foreach ($cars as $car)
         <div
-            class="overflow-hidden transition duration-300 ease-in-out transform bg-white rounded-lg shadow-md  hover:shadow-lg">
+            class="overflow-hidden transition duration-300 ease-in-out transform bg-white rounded-lg shadow-md hover:shadow-lg">
             <!-- Post image -->
             <div class="relative h-48 bg-center bg-cover"
                 style="background-image: url('{{ $car->image ? asset('storage/' . $car->image) : asset('storage/default/car3.png') }}');">
@@ -48,7 +48,7 @@
                     </svg>
                     <span>{{ Str::limit($car->description, 30, '...') }}</span>
                 </div>
-                <div class="flex flex-row gap-2 items-center" wire:ignore>
+                <div class="flex flex-row items-center gap-2" wire:ignore>
                     @auth
                     <button class="default-button" wire:click.prevent="toEdit({{$car->id}})">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -80,9 +80,7 @@
         </div>
         @endforeach
     </div>
-
     <div class="flex justify-center mt-6 mb-6 pagination-wrapper">
         <span class="font-medium">{{ $cars->links('vendor.pagination.tailwind') }}</span>
     </div>
-
 </div>

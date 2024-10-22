@@ -12,9 +12,7 @@ new class extends Component {
 }; ?>
 
 <div>
-    <button wire:click="logout" class="w-full text-start">
-        <x-dropdown-link>
-            {{ __('Log Out') }}
-        </x-dropdown-link>
-    </button>
+    {{-- <button wire:click.prevent="logout" class="w-full text-start">
+        {{ __('Log Out') }}
+    </button> --}}
 </div>

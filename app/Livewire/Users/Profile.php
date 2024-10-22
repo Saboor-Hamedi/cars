@@ -14,7 +14,6 @@ class Profile extends Component
     public ?string $birthday = '';
     public $photo;
     public $photoPath;
-
     protected $listeners = ['refreshComponent' => '$refresh'];
     use WithFileUploads;
     public function mount()
@@ -103,6 +102,7 @@ class Profile extends Component
 
     public function render()
     {
-        return view('livewire.users.profile')->layout('layouts.app');
+        return view('livewire.users.profile')->layout('components.layout');
+        // ->layout('layouts.app')
     }
 }

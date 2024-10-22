@@ -1,8 +1,7 @@
 <x-layout>
     @livewire('header')
-    <div class="mt-2 text-xl">
+    <div class="mt-16 text-xl">
     </div>
-
     <div class="flex flex-col items-center bg-gray-50 ">
         <div class="max-w-2xl p-2 mx-auto">
             <!-- Adjusted max width to md -->
@@ -40,10 +39,10 @@
     </div>
     {{-- latest --}}
     <div>
-        <div class="grid gap-2 p-5 post__section sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div class="grid gap-2 p-5 post__section sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:mx-auto">
             @foreach ($latest as $car)
             <div
-                class="overflow-hidden transition duration-300 ease-in-out transform bg-white rounded-lg shadow-md  hover:shadow-lg">
+                class="overflow-hidden transition duration-300 ease-in-out transform bg-white rounded-lg shadow-md hover:shadow-lg">
                 <!-- Post image -->
                 <div class="relative h-48 bg-center bg-cover"
                     style="background-image: url('{{ $car->image ? asset('storage/' . $car->image) : asset('storage/default/car3.png') }}');">
@@ -91,7 +90,7 @@
                         </svg>
                         <span>{{ Str::limit($car->description, 30, '...') }}</span>
                     </div>
-                    <div class="flex flex-row gap-2 items-center" wire:ignore>
+                    <div class="flex flex-row items-center gap-2" wire:ignore>
                         @auth
                         <a href="{{route('cars.edit',[$car->id])}}" class="default-button" wire:ignore>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

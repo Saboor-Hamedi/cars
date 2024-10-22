@@ -4,6 +4,7 @@ use App\Http\Controllers\cars\CarController;
 use App\Http\Controllers\FrontController;
 use App\Livewire\Cars\CreateCars;
 use App\Livewire\Cars\EditPost;
+use App\Livewire\Dashboard\Content;
 use App\Livewire\Password\ChangePassword;
 use App\Livewire\Password\ForgotPassword;
 use App\Livewire\Users\Profile;
@@ -23,30 +24,16 @@ Route::middleware('auth')->group(function () {
 
 
 // contact
-// Route::get('/contact-us', Contact::class)->name('contact-us.contact');
 Route::get('/contact', function () {
     return view('contact.contact'); // Render the contact view
 })->name('contact.contact');
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
-
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
-
-
-
+// dashboard
+Route::view('dashboard', 'dashboard')->middleware(['auth', 'verified'])->name('dashboard');
+Route::view('profile', 'profile')->middleware(['auth'])->name('profile');
 // change password
 Route::middleware(['auth'])->group(function () {
     Route::get('/password.change-password', ChangePassword::class)->name('password.change-password');
 });
-
-
+// reset password
 Route::get('/password.forgot-password', ForgotPassword::class)->name('password.forgot-password');
-
-
 require __DIR__ . '/auth.php';

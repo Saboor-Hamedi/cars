@@ -1,26 +1,21 @@
-:root {
-  --primary-color: #0964b0;
-}
-.custom-uploader{
+.custom-uploader {
   margin-top: 5px;
 }
 
 input[type=file] {
   width: 100%;
-  background-color: #f3f4f6;
+  background-color: #ffffff;
   text-align: right;
   filter: alpha(opacity=0);
   cursor: pointer;
   display: block;
   padding: 10px 12px;
   border-radius: 5px;
- box-shadow: -2px 3px 9px 3px rgba(184, 182, 182, 0.23) inset;
--webkit-box-shadow: -2px 3px 9px 3px rgba(199, 206, 206, 0.23) inset;
--moz-box-shadow: -2px 3px 9px 3px rgba(229, 239, 239, 0.23) inset;
+  box-shadow: -2px 3px 9px 3px rgba(184, 182, 182, 0.23) inset;
+  -webkit-box-shadow: -2px 3px 9px 3px rgba(199, 206, 206, 0.23) inset;
+  -moz-box-shadow: -2px 3px 9px 3px rgba(229, 239, 239, 0.23) inset;
 }
-input[type=file]:focus{
+
+input[type=file]:focus {
   outline: none;
 }
-
-
-

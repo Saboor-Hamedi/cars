@@ -1,6 +1,6 @@
 <div class="vote-card">
     <div class="vote-button">
-        <button wire:click="toggleVote(1)" class="p-2 rounded focus:outline-none">
+        <button wire:click.prevent="toggleVote(1)" class="p-2 rounded focus:outline-none">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-6 {{ $hasVote ? 'text-blue-500' : 'bg-transparent' }}">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -11,9 +11,9 @@
         {{ $count }}
         <div class="vote-error" id="voteMessage">
             @if (session()->has('error'))
-                <p class="text-xs text-center text-red-500 t vote-message ">
-                    {{ session('error') }}
-                </p>
+            <p class="text-xs text-center text-red-500 t vote-message ">
+                {{ session('error') }}
+            </p>
             @endif
         </div>
     </div>

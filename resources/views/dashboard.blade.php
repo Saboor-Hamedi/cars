@@ -1,6 +1,8 @@
 <x-app-layout>
     <div class="mt-2 text-xl"></div>
-    @livewire('hero')
+    <div class="mt-14">
+        @livewire('hero')
+    </div>
     <div class="py-2">
         <div class="mx-auto">
             <div class="overflow-hidden">

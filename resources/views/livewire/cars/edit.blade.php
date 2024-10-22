@@ -1,8 +1,6 @@
 <div>
-    {{-- header --}}
-    {{-- @livewire('header') --}}
-    {{-- edit cars/posts --}}
-    <div class="form__container">
+    {{-- edit posts --}}
+    <div class="mt-20 form__container">
         <form wire:submit.prevent="edit">
             @if (session()->has('message'))
             <div class="relative px-4 py-3 text-red-700 bg-red-100 border border-red-400 rounded" role="alert">

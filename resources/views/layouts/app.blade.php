@@ -7,31 +7,33 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Blog') }}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="{{asset('css/main.css')}}">
     <link rel="stylesheet" href="{{asset('css/sidebar.css')}}">
     <link rel="stylesheet" href="{{asset('css/cards.css')}}">
     <link rel="stylesheet" href="{{asset('css/forms.css')}}">
     <link rel="stylesheet" href="{{asset('css/files.css')}}">
+    <link rel="stylesheet" href="{{asset('css/bg_image.css')}}">
     <link rel="stylesheet" href="{{asset('css/easymde.min.css')}}">
     <script src="{{ asset('js/easymde.min.js') }}" defer></script>
     <script src="{{ asset('js/copyPost.js') }}" defer></script>
-
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
-    <div id="sidebar" class="sidebar">
-        @include('layouts.sidebar')
-    </div>
-    <main class="dashboard-main">
+    <main>
+        <div id="sidebar" class="sidebar">
+            @include('layouts.sidebar')
+        </div>
         <livewire:layout.navigation />
+        {{-- @livewire('header') --}}
         <!-- Page Heading -->
-        @if (isset($header))
-        <header class="bg-white shadow">
+        {{-- @if (isset($header))
+        <header class="bg-red-500 shadow">
             <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 {{ $header }}
             </div>
         </header>
-        @endif
+        @endif --}}
         {{ $slot }}
     </main>
     <script src="{{asset('js/sidebar.js')}}"></script>

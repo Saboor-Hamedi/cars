@@ -1,6 +1,8 @@
 <x-layout>
     @livewire('header')
-    @livewire('hero')
+    <div class="mt-14">
+        @livewire('hero')
+    </div>
     <div class="mx-auto">
         <div class="overflow-hidden">
             @livewire('front-content')
