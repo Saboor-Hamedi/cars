@@ -3,16 +3,24 @@
 namespace App\Livewire\Users;
 
 use App\Models\Car;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 
 class ShowProfile extends Component
 {
 
-    public $car;
-    public function mount(Car $car)
+
+    public function toEdit($id)
     {
-        $this->car = $car;
+
+        $car = Car::findOrFail($id);
+        if (Gate::allows('update', $car)) {
+            return redirect()->route('cars.edit', ['id' => $id]);
+        }
+        abort(403, 'You do not have permission to edit this post.');
     }
+
+
     public function render()
     {
         $latest = Car::with(['user.profile'])

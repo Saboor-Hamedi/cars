@@ -2,6 +2,8 @@
 namespace App\Livewire\Cars;
 
 use App\Models\Car;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\WithFileUploads;
 use Livewire\Component;
 use Illuminate\Support\Str;
@@ -9,6 +11,7 @@ use Illuminate\Support\Str;
 class EditPost extends Component
 {
     use WithFileUploads;
+    use AuthorizesRequests;
 
     public $car;
     public $name;
@@ -26,11 +29,14 @@ class EditPost extends Component
 
     public function mount($id)
     {
-        $this->car = Car::find($id);
+        $this->car = Car::findOrFail($id);
+        $this->authorize('update', $this->car);
         $this->name = $this->car->name;
         $this->color = $this->car->color;
         $this->year = $this->car->year;
         $this->description = $this->car->description;
+
+
     }
 
     public function edit()

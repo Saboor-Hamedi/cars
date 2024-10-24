@@ -7,6 +7,7 @@ use App\Livewire\Cars\EditPost;
 use App\Livewire\Dashboard\Content;
 use App\Livewire\Password\ChangePassword;
 use App\Livewire\Password\ForgotPassword;
+use App\Livewire\Search\SearchPosts;
 use App\Livewire\Users\Profile;
 use App\Livewire\Vote\Vote;
 use Illuminate\Support\Facades\Route;
@@ -20,7 +21,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/vote', Vote::class)->name('vote.vote');
     Route::get('/cars/{id}/edit', EditPost::class)->name('cars.edit');
 });
-
 
 
 // contact

@@ -58,7 +58,6 @@
                         </svg>
                     </button>
                     @endauth
-
                     <div data-url="{{ route('show-profile', ['car' => $car->id]) }}">
                         <h2>{{ $car->title }}</h2>
                         <button class="p-1 text-xs cursor-pointer default-button"
