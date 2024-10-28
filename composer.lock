@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "534c1f4cedc162368c319321796291b3",
+    "content-hash": "1139ac86ce2e79158f5708942e4b2beb",
     "packages": [
         {
             "name": "blade-ui-kit/blade-icons",
@@ -293,6 +293,150 @@
                 }
             ],
             "time": "2024-02-09T16:56:22+00:00"
+        },
+        {
+            "name": "codeat3/blade-bytesize-icons",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codeat3/blade-bytesize-icons.git",
+                "reference": "de7b422a37d371c5a5f5b3f20ddd5f853ced3d1b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codeat3/blade-bytesize-icons/zipball/de7b422a37d371c5a5f5b3f20ddd5f853ced3d1b",
+                "reference": "de7b422a37d371c5a5f5b3f20ddd5f853ced3d1b",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.1",
+                "illuminate/support": "^8.0|^9.0|^10.0|^11.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "codeat3/blade-icon-generation-helpers": "^0.8",
+                "codeat3/phpcs-styles": "^1.0",
+                "orchestra/testbench": "^6.0|^7.0|^8.0|^9.0",
+                "phpunit/phpunit": "^9.0|^10.5|^11.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Codeat3\\BladeBytesizeIcons\\BladeBytesizeIconsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Codeat3\\BladeBytesizeIcons\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Swapnil Sarwe",
+                    "homepage": "https://swapnilsarwe.com"
+                },
+                {
+                    "name": "Dries Vints",
+                    "homepage": "https://driesvints.com"
+                }
+            ],
+            "description": "A package to easily make use of Bytesize Icons in your Laravel Blade views.",
+            "homepage": "https://github.com/codeat3/blade-bytesize-icons",
+            "keywords": [
+                "blade",
+                "bytesize",
+                "icons",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/codeat3/blade-bytesize-icons/issues",
+                "source": "https://github.com/codeat3/blade-bytesize-icons/tree/1.5.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/swapnilsarwe",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-02-28T12:35:49+00:00"
+        },
+        {
+            "name": "codeat3/blade-mono-icons",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codeat3/blade-mono-icons.git",
+                "reference": "80bf9f61406b0225e0b34c33c64053c1b9284c26"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codeat3/blade-mono-icons/zipball/80bf9f61406b0225e0b34c33c64053c1b9284c26",
+                "reference": "80bf9f61406b0225e0b34c33c64053c1b9284c26",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.1",
+                "illuminate/support": "^8.0|^9.0|^10.0|^11.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "codeat3/blade-icon-generation-helpers": "^0.8",
+                "codeat3/phpcs-styles": "^1.0",
+                "orchestra/testbench": "^6.0|^7.0|^8.0|^9.0",
+                "phpunit/phpunit": "^9.0|^10.5|^11.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Codeat3\\BladeMonoIcons\\BladeMonoIconsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Codeat3\\BladeMonoIcons\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Swapnil Sarwe",
+                    "homepage": "https://swapnilsarwe.com"
+                },
+                {
+                    "name": "Dries Vints",
+                    "homepage": "https://driesvints.com"
+                }
+            ],
+            "description": "A package to easily make use of Mono Icons in your Laravel Blade views.",
+            "homepage": "https://github.com/codeat3/blade-mono-icons",
+            "keywords": [
+                "blade",
+                "icons",
+                "laravel",
+                "mono"
+            ],
+            "support": {
+                "issues": "https://github.com/codeat3/blade-mono-icons/issues",
+                "source": "https://github.com/codeat3/blade-mono-icons/tree/1.4.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/swapnilsarwe",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-02-28T15:47:31+00:00"
         },
         {
             "name": "dflydev/dot-access-data",

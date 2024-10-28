@@ -7,6 +7,8 @@
     "require": {
         "php": "^8.2",
         "blade-ui-kit/blade-ui-kit": "^0.6.2",
+        "codeat3/blade-bytesize-icons": "^1.5",
+        "codeat3/blade-mono-icons": "^1.4",
         "egulias/email-validator": "^4.0",
         "faisal50x/blade-ionicons": "^1.0",
         "khatabwedaa/blade-css-icons": "^1.4",

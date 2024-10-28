@@ -3,7 +3,8 @@
     <div class="flex items-center justify-center">
         <input type="text" id="search" name="search" wire:model.live.debounce.750ms="query" style="width: 100%"
             class="px-4 py-2 pr-10 rounded-md " placeholder="Search posts by title...">
-        <button onclick="closeResults()" class="absolute p-1 text-xs rounded-full right-2">
+        <button onclick="closeSearchBox()" id="closeBtn" class="absolute p-1 text-xs rounded-full right-2"
+            style="display: none">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -21,8 +22,8 @@
                 <ul id="results">
                     @foreach ($cars as $index => $car)
                         <a href="{{ route('show-profile', [$car['id']]) }}">
-                            <li class="item-lists" id="select-li-{{ $index }}" data-index="{{ $index }}"
-                                tabindex="0">
+                            <li class="p-1 item-lists" id="select-li-{{ $index }}"
+                                data-index="{{ $index }}" tabindex="0">
                                 {{ $car['name'] }}
                             </li>
                         </a>
@@ -32,7 +33,7 @@
         </div>
     @endif
     <script>
-        function closeResults() {
+        function closeSearchBox() {
             const notfound = document.querySelector('#notfound');
             const resultsContainer = document.querySelector('#results');
             const searchInput = document.querySelector('#search');
@@ -54,6 +55,8 @@
         }
         document.addEventListener('DOMContentLoaded', () => {
             let currentIndex = -1;
+
+
 
             document.addEventListener('keydown', (e) => {
                 const itemLists = document.querySelectorAll('.item-lists');

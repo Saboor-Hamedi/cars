@@ -8,6 +8,7 @@ use App\Livewire\Dashboard\Content;
 use App\Livewire\Password\ChangePassword;
 use App\Livewire\Password\ForgotPassword;
 use App\Livewire\Search\SearchPosts;
+use App\Livewire\Users\PersonalInfo;
 use App\Livewire\Users\Profile;
 use App\Livewire\Vote\Vote;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,7 @@ Route::get('/cars/create', [CarController::class, 'create'])->name('cars.create'
 Route::middleware('auth')->group(function () {
     Route::get('/cars', CreateCars::class)->name('cars.create-cars');
     Route::get('/users', Profile::class)->name('users.profile');
+    Route::get('/users/personal-info', PersonalInfo::class)->name('users.personal-info');
     Route::get('/vote', Vote::class)->name('vote.vote');
     Route::get('/cars/{id}/edit', EditPost::class)->name('cars.edit');
 });

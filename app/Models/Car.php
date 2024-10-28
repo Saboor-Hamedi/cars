@@ -28,7 +28,10 @@ class Car extends Model
             ->withPivot('vote')
             ->withTimestamps();
     }
-
+    public function voteCount()
+    {
+        return $this->votes()->count();
+    }
     public function updateVoteState(): bool
     {
         $user = Auth::user();
