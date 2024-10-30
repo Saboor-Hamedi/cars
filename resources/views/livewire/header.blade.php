@@ -8,13 +8,13 @@
                     aria-controls="mobile-menu" aria-expanded="false">
                     <span class="absolute -inset-0.5"></span>
                     <span class="sr-only">Open main menu</span>
-                    <svg class="block w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                        aria-hidden="true" data-slot="icon">
+                    <svg class="block w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" aria-hidden="true" data-slot="icon">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>
-                    <svg class="hidden w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                        aria-hidden="true" data-slot="icon">
+                    <svg class="hidden w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" aria-hidden="true" data-slot="icon">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                     </svg>
                 </button>
@@ -25,26 +25,31 @@
                         alt="Your Company">
                 </div>
                 <div class="hidden sm:ml-6 sm:block">
-                    <div class="flex space-x-4">
+                    <div class="flex items-center space-x-4">
                         @auth
-                        <x-custom-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                            {{__('Dashboard')}}
-                        </x-custom-nav-link>
+                            {{-- profile --}}
+                            <x-custom-nav-link href="{{ route('users.profile') }}" :active="request()->routeIs('users.profile')">
+                                <x-css-profile style="width: 20px;" />
+                            </x-custom-nav-link>
+                            {{-- dashboard --}}
+                            <x-custom-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                                <x-uni-create-dashboard style="width: 20px;" />
+                            </x-custom-nav-link>
+
                         @endauth
                         @guest
-                        <x-custom-nav-link href="{{ route('welcome') }}" :active="request()->routeIs('welcome')">
-                            {{__('Home')}}
-                        </x-custom-nav-link>
-                        <x-custom-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
-                            {{__('Login')}}
-                        </x-custom-nav-link>
-                        <x-custom-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
-                            {{__('Register')}}
-                        </x-custom-nav-link>
+                            <x-custom-nav-link href="{{ route('welcome') }}" :active="request()->routeIs('welcome')">
+                                {{ __('Home') }}
+                            </x-custom-nav-link>
+                            <x-custom-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
+                                <x-untitledui-lock style="width: 20px;" />
+                            </x-custom-nav-link>
+                            <x-custom-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
+                                <x-hugeicons-register style="width: 20px;" />
+                            </x-custom-nav-link>
                         @endguest
-                        <x-custom-nav-link href="{{ route('contact.contact') }}"
-                            :active="request()->routeIs('contact.contact')">
-                            {{__('Contact')}}
+                        <x-custom-nav-link href="{{ route('contact.contact') }}" :active="request()->routeIs('contact.contact')">
+                            <x-hugeicons-contact style="width: 20px;" />
                         </x-custom-nav-link>
 
                     </div>
@@ -86,7 +91,7 @@
                         <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
                             id="user-menu-item-1">Settings</a>
                         @auth
-                        <div>@livewire('voltlogout.logout')</div>
+                            <div>@livewire('voltlogout.logout')</div>
                         @endauth
                     </div>
                 </div>
@@ -98,21 +103,20 @@
     <div class="sm:hidden" id="mobile-menu" style="display: none;">
 
         @auth
-        <x-custom-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" mobile="true">
-            {{__('Dashboard')}}
-        </x-custom-nav-link>
+            <x-custom-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" mobile="true">
+                {{ __('Dashboard') }}
+            </x-custom-nav-link>
         @endauth
         @guest
-        <x-custom-nav-link href="{{ route('welcome') }}" :active="request()->routeIs('welcome')" mobile="true">
-            {{__('Home')}}
-        </x-custom-nav-link>
-        <x-custom-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')" mobile="true">
-            {{__('Register')}}
-        </x-custom-nav-link>
+            <x-custom-nav-link href="{{ route('welcome') }}" :active="request()->routeIs('welcome')" mobile="true">
+                {{ __('Home') }}
+            </x-custom-nav-link>
+            <x-custom-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')" mobile="true">
+                {{ __('Register') }}
+            </x-custom-nav-link>
         @endguest
-        <x-custom-nav-link href="{{ route('contact.contact') }}" :active="request()->routeIs('contact.contact')"
-            mobile="true">
-            {{__('Contact')}}
+        <x-custom-nav-link href="{{ route('contact.contact') }}" :active="request()->routeIs('contact.contact')" mobile="true">
+            {{ __('Contact') }}
         </x-custom-nav-link>
     </div>
 
@@ -120,12 +124,12 @@
     <script>
         function toggleMenu() {
             const menu = document.getElementById('user-menu');
-                if (menu) {
-                    menu.classList.toggle('hidden');
-                } else {
-                    console.error('Menu element not found');
-                }
+            if (menu) {
+                menu.classList.toggle('hidden');
+            } else {
+                console.error('Menu element not found');
             }
+        }
         window.onclick = function(event) {
             const menu = document.getElementById('user-menu');
             const button = document.getElementById('user-menu-button');
@@ -133,28 +137,27 @@
                 menu.classList.add('hidden');
             }
         }
-// mobile version nav
+        // mobile version nav
 
-document.addEventListener('DOMContentLoaded', function () {
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
 
-    // Toggle the menu visibility on button click
-    menuToggle.addEventListener('click', function () {
-        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
+            // Toggle the menu visibility on button click
+            menuToggle.addEventListener('click', function() {
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
 
-        // Toggle the aria-expanded attribute
-        menuToggle.setAttribute('aria-expanded', !isExpanded);
+                // Toggle the aria-expanded attribute
+                menuToggle.setAttribute('aria-expanded', !isExpanded);
 
-        // Toggle the display of the mobile menu
-        if (isExpanded) {
-            mobileMenu.style.display = 'none'; // Close the menu
-        } else {
-            mobileMenu.style.display = 'block'; // Open the menu
-        }
-    });
-});
-
+                // Toggle the display of the mobile menu
+                if (isExpanded) {
+                    mobileMenu.style.display = 'none'; // Close the menu
+                } else {
+                    mobileMenu.style.display = 'block'; // Open the menu
+                }
+            });
+        });
     </script>
 
 </nav>

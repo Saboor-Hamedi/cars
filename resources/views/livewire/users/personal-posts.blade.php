@@ -3,7 +3,7 @@
         <div class="grid gap-3 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-3">
             @foreach ($cars as $car)
                 <div
-                    class="overflow-hidden transition duration-300 transform bg-white rounded-lg shadow-md hover:scale-105">
+                    class="overflow-hidden transition duration-300 transform bg-white rounded-lg shadow-md hover:shadow-sm ">
                     <!-- Car Image -->
                     <img src="{{ $car->image_url ?? 'https://via.placeholder.com/300x200' }}" alt="{{ $car->name }}"
                         class="object-cover w-full h-48">

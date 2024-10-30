@@ -64,9 +64,6 @@ new #[Layout('layouts.guest')] class extends Component {
                 </a>
             @endif
 
-            {{-- <button class="ms-3 bg-[#c13584] rounded-md text-white cursor-pointer p-1 shadow-md">{{ __('Log in')
-                }}</button> --}}
-
             <x-primary-button class="ms-3 bg-[#c13584]">
                 {{ __('Log in') }}
             </x-primary-button>

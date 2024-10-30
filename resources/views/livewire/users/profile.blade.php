@@ -1,8 +1,6 @@
 <div>
     @livewire('users.profile-header')
-
     {{-- end tabs --}}
-
     <section class="relative pt-40 pb-24">
         <div style="background-color: {{ $bgColor ?? '#000000' }};"
             class="absolute top-0 left-0 z-0 object-cover w-full h-60">
@@ -28,7 +26,7 @@
 
             <div class="flex flex-col items-center justify-center mb-5 sm:flex-row max-sm:gap-5 sm:justify-between">
                 <div class="block">
-                    <h3 class="mb-1 lg:text-4xl md:text-lg sm:text-sm font-bold text-gray-900 font-manrope ">
+                    <h3 class="mb-1 font-bold text-gray-900 lg:text-4xl md:text-lg sm:text-sm font-manrope ">
                         {{ Str::ucfirst(Auth::user()->name) }}
                         {{ $lastname }}
                     </h3>
@@ -65,8 +63,4 @@
     </section>
     {{-- Show posts --}}
     @livewire('users.personal-posts')
-
-
-
-
 </div>

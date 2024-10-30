@@ -6,21 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
-  @vite(['resources/css/app.css','resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased text-gray-900">
+<body class="">
     @livewire('header')
-    <div class="flex flex-col items-center min-h-screen pt-6 bg-gray-100 sm:justify-center sm:pt-0">
-        {{-- <div>
-            <a href="/" wire:navigate>
-                <x-application-logo class="w-20 h-20 text-gray-500 fill-current" />
-            </a>
-        </div> --}}
-        <div class="w-full px-6 py-4 mb-6 overflow-hidden bg-white shadow-md sm:max-w-md sm:rounded-lg">
+    <main class="flex justify-center items-center w-full min-h-screen bg-gray-100">
+        <div
+            class="max-w-md w-full bg-white rounded-lg p-5 shadow-md hover:shadow-sm transition duration-500 ease-in-out transform mt-20 ">
             {{ $slot }}
         </div>
-    </div>
+    </main>
 </body>
 
 </html>
