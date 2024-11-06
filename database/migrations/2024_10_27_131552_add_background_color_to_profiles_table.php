@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('profiles', function (Blueprint $table) {
-            $table->string('background_color')->nullable()->after('photo');
+            $table->string('background_color')->default('#000000')->nullable()->after('photo');
         });
     }
 

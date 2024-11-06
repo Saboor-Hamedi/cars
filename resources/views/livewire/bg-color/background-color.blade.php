@@ -5,11 +5,12 @@
             style="background-color: {{ $backgroundColor }};"
             onclick="document.getElementById('background-color').click()">
         </div>
-        <input type="color" id="background-color" wire:model="backgroundColor"
+        <input type="color" id="background-color" wire:model.lazy="backgroundColor"
             class="absolute right-0 w-0 h-0 mr-16 opacity-0" onchange="updateCircleColorAndSave(this.value)">
         <div wire:loading.delay>
             Loading...
         </div>
+
     </div>
     <script>
         function updateCircleColorAndSave(color) {

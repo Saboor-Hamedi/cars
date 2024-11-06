@@ -7,10 +7,7 @@ use Livewire\Component;
 
 class BackgroundColor extends Component
 {
-
     public ?string $backgroundColor = '';
-
-
     public function mount()
     {
         $this->backgroundColor = Auth::user()->profile->background_color ?? '#000000';
@@ -20,10 +17,18 @@ class BackgroundColor extends Component
         $this->validate([
             'backgroundColor' => 'required|string|max:7|regex:/^#[a-fA-F0-9]{6}$/',
         ]);
-        $profile = Auth::user()->profile;
-        $profile->update(['background_color' => $this->backgroundColor]);
-        session()->flash('message', 'Changed');
-        $this->dispatch('backgroundColorUpdated', $this->backgroundColor);
+        $user = Auth::user();
+        $profile = $user->profile;
+
+        if ($profile) {
+            $profile->update(['background_color' => $this->backgroundColor]);
+        } else {
+            $user->profile()->create([
+                'background_color' => $this->backgroundColor,
+                'user_id' => $user->id,
+            ]);
+        }
+        $this->dispatch('updateBackground', $this->backgroundColor);
     }
 
     public function getListeners()
@@ -32,7 +37,6 @@ class BackgroundColor extends Component
             'setBackgroundColor' => 'saveBackgroundColor',
         ];
     }
-
 
     public function render()
     {

@@ -21,7 +21,7 @@ new class extends Component {
                     <!-- Logo -->
                     <div class="flex items-center mr-5 dashboard-logo">
                         <!-- Sidebar Button -->
-                        <div class="openSidebar" wire:ignore>
+                        <div class="openSidebar">
                             <button id="sidebar-open" onclick="openSidebar()" class="default-button">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -32,7 +32,7 @@ new class extends Component {
                         </div>
                         {{-- dashboard-logo-name --}}
                         <div class="ml-4">
-                            <x-nav-link href="{{ route('welcome') }}" :active="request()->routeIs('welcome')" wire:navigate>
+                            <x-nav-link href="{{ route('welcome') }}" :active="request()->routeIs('welcome')">
                                 {{ __('Home') }}
                             </x-nav-link>
                         </div>
@@ -41,13 +41,15 @@ new class extends Component {
                 </div>
                 <div class="flex justify-end">
                     <button wire:click.prevent="logout" class="w-full text-start">
-                        <svg class="w-5 h-5 text-red-200" width="24" height="24" viewBox="0 0 24 24"
+                        {{-- <svg class="w-5 h-5 text-red-200" width="24" height="24" viewBox="0 0 24 24"
                             stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                             stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" />
-                            <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
-                            <path d="M7 12h14l-3 -3m0 6l3 -3" />
-                        </svg>
+                            <path stroke="none" d="M0 0h24v24H0z"></path>
+                            <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2">
+                            </path>
+                            <path d="M7 12h14l-3 -3m0 6l3 -3"></path>
+                        </svg> --}}
+                        <x-antdesign-logout-o style="width: 15px; color:red;" />
                     </button>
                 </div>
 

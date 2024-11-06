@@ -42,8 +42,8 @@
 
             </x-nav-link>
         </li>
-        <li wire:navigate>
-            @livewire('logout')
+        <li>
+            @livewire('logout.logout')
         </li>
     </ul>
 </div>

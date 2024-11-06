@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
 
         ]);
-        Car::factory(1)->create();
+        Car::factory(50000)->create();
         Profile::factory(1)->create();
     }
 }

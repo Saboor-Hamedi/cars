@@ -1,5 +1,6 @@
 <div>
     <div class="grid gap-2 p-5 post__section sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+
         @foreach ($cars as $car)
             <div
                 class="overflow-hidden transition duration-300 ease-in-out transform bg-white rounded-lg shadow-md hover:shadow-lg">
@@ -84,9 +85,7 @@
             </div>
         @endforeach
     </div>
-
     <div class="flex justify-center mt-6 mb-6 pagination-wrapper">
         <span class="font-medium">{{ $cars->links('vendor.pagination.tailwind') }}</span>
     </div>
-
 </div>

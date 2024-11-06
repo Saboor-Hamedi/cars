@@ -15,7 +15,7 @@ class Profile extends Component
 
     protected $listeners = [
         'refreshComponent' => '$refresh',
-        'backgroundColorUpdated' => 'updateColor'
+        'updateBackground' => 'updateColor'
     ];
     use WithFileUploads;
     public function mount()

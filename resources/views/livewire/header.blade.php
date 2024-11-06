@@ -1,6 +1,6 @@
 <nav class="fixed top-0 z-10 w-full bg-gray-800">
-    <div class="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div class="relative flex items-center justify-between h-16">
+    <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="relative flex items-center justify-between p-2 h-15">
             <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 <!-- Mobile menu button-->
                 <button type="button" id="menu-toggle"
@@ -20,20 +20,19 @@
                 </button>
             </div>
             <div class="flex items-center justify-center flex-1 sm:items-stretch sm:justify-start">
-                <div class="flex items-center flex-shrink-0">
-                    <img class="w-auto h-8" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
-                        alt="Your Company">
-                </div>
+                {{-- logo here --}}
+                {{-- <div class="flex items-center flex-shrink-0">
+                </div> --}}
                 <div class="hidden sm:ml-6 sm:block">
                     <div class="flex items-center space-x-4">
                         @auth
                             {{-- profile --}}
                             <x-custom-nav-link href="{{ route('users.profile') }}" :active="request()->routeIs('users.profile')">
-                                <x-css-profile style="width: 20px;" />
+                                <x-css-profile style="width: 18px;" />
                             </x-custom-nav-link>
                             {{-- dashboard --}}
                             <x-custom-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                                <x-uni-create-dashboard style="width: 20px;" />
+                                <x-uni-create-dashboard style="width: 18px;" />
                             </x-custom-nav-link>
 
                         @endauth
@@ -42,10 +41,10 @@
                                 {{ __('Home') }}
                             </x-custom-nav-link>
                             <x-custom-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
-                                <x-untitledui-lock style="width: 20px;" />
+                                <x-untitledui-lock style="width: 18px;" />
                             </x-custom-nav-link>
                             <x-custom-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
-                                <x-hugeicons-register style="width: 20px;" />
+                                <x-hugeicons-register style="width: 18px;" />
                             </x-custom-nav-link>
                         @endguest
                         <x-custom-nav-link href="{{ route('contact.contact') }}" :active="request()->routeIs('contact.contact')">
@@ -81,17 +80,19 @@
                         </button>
                     </div>
 
+                    {{-- drop down --}}
 
                     <div class="absolute right-0 z-10 hidden w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                        role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
-                        id="user-menu">
+                        role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" id="user-menu">
                         <!-- Active: "bg-gray-100", Not Active: "" -->
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
-                            id="user-menu-item-0">Your Profile</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
-                            id="user-menu-item-1">Settings</a>
+                        <a href="#"
+                            class="block px-4 py-2 text-sm text-gray-700 transition duration-300 ease-in-out transform hover:bg-gray-100"
+                            role="menuitem" id="user-menu-item-0">Your Profile</a>
+                        <a href="#"
+                            class="block px-4 py-2 text-sm text-gray-700 transition duration-300 ease-in-out transform hover:bg-gray-100"
+                            role="menuitem" id="user-menu-item-1">Settings</a>
                         @auth
-                            <div>@livewire('voltlogout.logout')</div>
+                            @livewire('logout.logout')
                         @endauth
                     </div>
                 </div>

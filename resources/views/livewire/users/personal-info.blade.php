@@ -1,6 +1,6 @@
 <div>
     @livewire('users.profile-header')
-    <div class="p-4 mt-4">
+    <div class="p-4 mt-20">
         <div class="overflow-hidden bg-white rounded-md shadow-md ">
             <div class="p-6 text-gray-900 transition ease-in-out transform duration-900">
 
@@ -29,13 +29,14 @@
                     {{-- Display photo here --}}
                     <div class="flex flex-row-reverse items-center justify-between px-1 mt-3 rounded-md ">
                         @if ($photo)
-                            <img id="image-preview" src="{{ $photo->temporaryUrl() }}"
-                                class="object-cover w-32 h-32 border-2 border-gray-300 rounded-full shadow-md"
-                                alt="Profile Image">
+                            <img src="{{ $photo->temporaryUrl() }}"
+                                class="w-32 h-32 rounded-full sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-40 lg:h-40 xl:w-50 xl:h-50">
+                        @elseif ($photoPath)
+                            <img src="{{ $photoPath ? asset('storage/' . $photoPath) : '' }}"
+                                class="w-32 h-32 rounded-full sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-40 lg:h-40 xl:w-50 xl:h-50">
                         @else
-                            <img id="image-preview" src="{{ $photoPath ? asset('storage/' . $photoPath) : '' }}"
-                                class="object-cover w-32 h-32 border-2 border-gray-300 rounded-full shadow-md"
-                                alt="Profile Image">
+                            <img src="https://pagedone.io/asset/uploads/1705471668.png"
+                                class="w-32 h-32 rounded-full sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-40 lg:h-40 xl:w-50 xl:h-50">
                         @endif
                         {{-- Save button --}}
 

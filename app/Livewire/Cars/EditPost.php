@@ -29,16 +29,18 @@ class EditPost extends Component
 
     public function mount($id)
     {
+        $this->load($id);
+    }
+    public function load($id)
+    {
         $this->car = Car::findOrFail($id);
         $this->authorize('update', $this->car);
+        // Load car attributes
         $this->name = $this->car->name;
         $this->color = $this->car->color;
         $this->year = $this->car->year;
         $this->description = $this->car->description;
-
-
     }
-
     public function edit()
     {
         $this->validate();
@@ -61,6 +63,7 @@ class EditPost extends Component
 
         $this->car->update($data);
         session()->flash('message', "'{$this->name}' successfully updated");
+        return redirect()->to('/dashboard');
     }
 
     public function render()

@@ -20,6 +20,7 @@ class SearchPosts extends Component
         $this->validate();
         $this->cars = Car::where('name', 'like', '%' . $this->query . '%')
             ->orWhere('description', 'like', '%' . $this->query . '%')
+            ->limit(5)
             ->get()
             ->toArray();
     }

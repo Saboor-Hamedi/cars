@@ -13,10 +13,10 @@ return new class extends Migration {
         Schema::create('cars', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->string('name');
+            $table->string('name')->index('name');
             $table->string('color');  // Limit to 5 characters
             $table->year('year');   // Limit to 4 characters
-            $table->string('description');
+            $table->string('description')->index('description');
             $table->string('image')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

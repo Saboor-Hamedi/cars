@@ -1,5 +1,5 @@
-  <div class="border-b border-gray-200 h-30 dark:border-gray-700">
-      <ul class="flex items-center text-xs font-medium text-center text-gray-500 dark:text-gray-400">
+  <div class="fixed top-0  w-full bg-gray-800 z-10">
+      <ul class="flex items-center text-xs font-medium text-center text-white dark:text-gray-400">
           <li>
               <x-profile-nav-link href="{{ route('welcome') }}" :active="request()->routeIs('welcome')">
                   <x-untitledui-home style="width: 15px;" class="mr-1" />
@@ -19,12 +19,10 @@
               </x-profile-nav-link>
           </li>
 
-          <ul class="flex items-center justify-end w-full h-12">
-              <li class="px-4 py-2 transition duration-300 ease-in-out hover:bg-gray-500">
+          <ul class="flex items-center justify-end w-full h-12 ">
+              <li class="transition duration-300 ease-in-out">
                   @livewire('logout')
               </li>
           </ul>
-
-
       </ul>
   </div>

@@ -1,15 +1,16 @@
 <div>
+    {{-- load profile header --}}
     @livewire('users.profile-header')
     {{-- end tabs --}}
     <section class="relative pt-40 pb-24">
         <div style="background-color: {{ $bgColor ?? '#000000' }};"
-            class="absolute top-0 left-0 z-0 object-cover w-full h-60">
+            class="absolute top-0 left-0  object-cover w-full h-60">
         </div>
 
         <div class="w-full px-6 mx-auto max-w-7xl md:px-8">
 
             <div
-                class="relative z-10 flex items-center justify-center p-2 mb-5 transition duration-300 ease-in-out transform bg-white rounded-md shadow-md hover:shadow-sm sm:justify-start">
+                class="relative flex items-center justify-center p-2 mb-5 transition duration-300 ease-in-out transform bg-white rounded-md shadow-md hover:shadow-sm sm:justify-start">
                 @if ($photo)
                     <img src="{{ $photo->temporaryUrl() }}"
                         class="w-32 h-32 rounded-full sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-40 lg:h-40 xl:w-50 xl:h-50">
@@ -21,7 +22,10 @@
                         class="w-32 h-32 rounded-full sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-40 lg:h-40 xl:w-50 xl:h-50">
                 @endif
 
+                {{-- load background color --}}
+
                 @livewire('bg-color.background-color')
+
             </div>
 
             <div class="flex flex-col items-center justify-center mb-5 sm:flex-row max-sm:gap-5 sm:justify-between">

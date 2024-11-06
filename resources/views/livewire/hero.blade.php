@@ -1,6 +1,5 @@
-    <div class="relative z-0 py-10">
-
-        <div class="flex items-center justify-center mx-auto lg:w-5/6 " style="width: 50%">
+    <div class="relative py-10">
+        <div class="flex items-center justify-center mx-auto lg:w-5/6" style="width: 50%">
             @livewire('search.search-posts')
         </div>
         <!-- Hero Section -->

@@ -6,17 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Blog') }}</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="{{asset('css/main.css')}}">
-    <link rel="stylesheet" href="{{asset('css/sidebar.css')}}">
-    <link rel="stylesheet" href="{{asset('css/cards.css')}}">
-    <link rel="stylesheet" href="{{asset('css/forms.css')}}">
-    <link rel="stylesheet" href="{{asset('css/files.css')}}">
-    <link rel="stylesheet" href="{{asset('css/bg_image.css')}}">
-    <link rel="stylesheet" href="{{asset('css/easymde.min.css')}}">
+
+    @livewireStyles
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cards.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/files.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bg_image.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/easymde.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/loader.css') }}">
     <script src="{{ asset('js/easymde.min.js') }}" defer></script>
     <script src="{{ asset('js/copyPost.js') }}" defer></script>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite('resources/css/app.css')
 </head>
 
 <body>
@@ -25,19 +27,14 @@
             @include('layouts.sidebar')
         </div>
         <livewire:layout.navigation />
-        {{-- @livewire('header') --}}
-        <!-- Page Heading -->
-        {{-- @if (isset($header))
-        <header class="bg-red-500 shadow">
-            <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                {{ $header }}
-            </div>
-        </header>
-        @endif --}}
+
         {{ $slot }}
     </main>
-    <script src="{{asset('js/sidebar.js')}}"></script>
-    <script src="{{asset('js/carColor.js')}}"></script>
+
+    @livewireScripts
+    @vite('resources/js/app.js')
+    <script src="{{ asset('js/sidebar.js') }}"></script>
+    <script src="{{ asset('js/carColor.js') }}"></script>
 </body>
 
 </html>
