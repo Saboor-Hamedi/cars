@@ -3,8 +3,7 @@
     <div class="flex items-center justify-center">
         <input type="text" id="search" name="search" wire:model.live.debounce.750ms="query" style="width: 100%"
             class="px-4 py-2 pr-10 rounded-md " placeholder="Search posts by title...">
-        <button onclick="closeSearchBox()" id="closeBtn" class="absolute p-1 text-xs rounded-full right-2"
-            style="display: none">
+        <button onclick="closeSearchBox()" id="closeBtn" class="absolute p-1 text-xs rounded-full right-2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />

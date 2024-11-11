@@ -27,9 +27,9 @@
     </main>
 
     @livewireScripts
-    @vite('resources/js/app.js')
     <script src="{{ asset('js/chatbox.js') }}"></script>
     <script src="{{ asset('js/easymde.min.js') }}"></script>
+    @vite('resources/js/app.js')
 </body>
 
 </html>

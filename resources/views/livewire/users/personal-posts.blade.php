@@ -2,7 +2,7 @@
     <div class="max-w-screen-xl p-5 mx-auto ">
         <div class="grid gap-3 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-3">
             @foreach ($cars as $car)
-                <div
+                <div wire:key="{{ $car->id }}"
                     class="overflow-hidden transition duration-300 transform bg-white rounded-lg shadow-md hover:shadow-sm ">
                     <!-- Car Image -->
                     <img src="{{ $car->image_url ?? 'https://via.placeholder.com/300x200' }}" alt="{{ $car->name }}"
@@ -18,17 +18,18 @@
                             <span class="mx-2">•</span>
                             <span>{{ $car->created_at->diffForHumans() }}</span>
                         </div>
-
                         <!-- Car Description -->
                         <p class="mt-3 text-gray-600">
-                            {{ Str::limit($car->description, 40, '...') ?? 'No description available.' }}</p>
-                        <div class="flex items-center justify-between mt-4">
-                            {{-- <span class="font-semibold text-gray-700">{{ $car->voteCount() }} Likes</span>
-                    <button class="font-semibold text-blue-600 hover:text-blue-800">Like</button> --}}
-                        </div>
+                            {{ Str::limit($car->description, 40, '...') ?? 'No description available.' }}
+                            {{-- @livewire('users.personal-post-delete', ['carId' => $car->id]) --}}
+                            @livewire('users.personal-post-delete', ['carId' => $car->id], key('post-delete-' . $car->id))
+
+                        </p>
                     </div>
                     <div>
-                        @livewire('vote.vote', ['car' => $car])
+                        {{-- @livewire('vote.vote', ['car' => $car]) --}}
+                        @livewire('vote.vote', ['car' => $car], key('vote-' . $car->id))
+
                     </div>
                 </div>
             @endforeach

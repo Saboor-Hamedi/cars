@@ -32,9 +32,9 @@
     </main>
 
     @livewireScripts
-    @vite('resources/js/app.js')
     <script src="{{ asset('js/sidebar.js') }}"></script>
     <script src="{{ asset('js/carColor.js') }}"></script>
+    @vite('resources/js/app.js')
 </body>
 
 </html>

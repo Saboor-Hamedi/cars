@@ -45,7 +45,7 @@ class CarPolicy
      */
     public function delete(User $user, Car $car): bool
     {
-        //
+        return $user?->id === $car->user_id;
     }
 
     /**
