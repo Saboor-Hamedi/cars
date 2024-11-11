@@ -18,6 +18,6 @@ class CarSeeder extends Seeder
     {
 
         // User::factory(1)->create();
-        // Car::factory(100)->create();
+        Car::factory(100)->create();
     }
 }

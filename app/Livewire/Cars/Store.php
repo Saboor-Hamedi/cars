@@ -54,7 +54,7 @@ class Store extends Component
         }
 
         $user->car()->create($data);
-        session()->flash('message', "'{$this->name}' successfully stored");
+        // session()->flash('message', "'{$this->name}' successfully stored");
         $this->reset();
         $this->description = '';
     }

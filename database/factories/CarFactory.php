@@ -1,4 +1,5 @@
 <?php
+
 namespace Database\Factories;
 
 use App\Models\User;
@@ -20,32 +21,12 @@ class CarFactory extends Factory
      */
     public function definition(): array
     {
-        // Create a Faker instance
-        $faker = Faker::create('en_US');
-
-        // Define base URL for random images (using Picsum Photos as an example)
-        $baseUrl = "https://picsum.photos/400/300";
-
-        // Generate a unique image name using UUID and a descriptive string
-        $imageName = Str::uuid() . '_' . $faker->word . '.jpg';  // e.g., 0b8ccff4-bbf7-43c1-9ff0-70ec58571deb_beatae.jpg
-
-        // Use storage disk to store the image in the public storage path
-        $imagePath = 'car_pics/' . $imageName;  // Store this relative path
-
-        // Download the image from the external URL
-        $imageContents = file_get_contents($baseUrl);
-
-        // Store the image in public storage
-        Storage::disk('public')->put($imagePath, $imageContents);
-
-        // Return the model attributes, including the relative image path
         return [
             'user_id' => User::all()->random()->id,
-            'name' => $faker->name,
-            'color' => $faker->colorName,
-            'year' => $faker->year,
-            'description' => $faker->paragraph(1),
-            'image' => '/' . $imagePath,  // Save the relative path
+            'name' => $this->faker->name,
+            'color' => $this->faker->colorName,
+            'year' => $this->faker->year,
+            'description' => $this->faker->paragraph(1),
         ];
     }
 }

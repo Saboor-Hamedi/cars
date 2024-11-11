@@ -33,7 +33,7 @@
                 <x-input-error :messages="$errors->get('year')" />
             </div>
 
-            <div class="mt-2 z-50" wire:ignore>
+            <div class="z-50 mt-2" wire:ignore>
                 <x-easy-mde wire:model.lazy='description' id="description" name="description" rows="2"
                     placeholder="Description..."
                     class="w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300

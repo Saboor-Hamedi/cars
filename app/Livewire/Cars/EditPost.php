@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Livewire\Cars;
 
 use App\Models\Car;

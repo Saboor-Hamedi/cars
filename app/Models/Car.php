@@ -38,6 +38,4 @@ class Car extends Model
 
         return $user ? $user->votes()->where('car_id', $this->id)->exists() : false;
     }
-
-
 }

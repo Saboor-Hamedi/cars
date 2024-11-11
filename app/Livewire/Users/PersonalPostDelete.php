@@ -3,7 +3,9 @@
 namespace App\Livewire\Users;
 
 use App\Models\Car;
+use Exception;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
@@ -19,16 +21,27 @@ class PersonalPostDelete extends Component
 
     public function delete()
     {
-
         $this->isDelete = true;
         $car = Car::findOrFail($this->carId);
         $this->authorize('delete', $car);
-        $imagePath = 'car_pics/' . $car->image;
-        if (Storage::disk('public')->exists($imagePath)) {
-            Storage::disk('public')->delete($imagePath);
+        try {
+            $imagePath = $car->image; // Ensure this is the correct relative path
+            if (!empty($imagePath)) {
+                if (Storage::disk('public')->exists($imagePath)) {
+                    // Log::info('File exists. Deleting image at path: ' . $imagePath);
+                    Storage::disk('public')->delete($imagePath);
+                } else {
+                    Log::warning('File does not exist, proceeding to delete car: ' . $imagePath);
+                }
+            } else {
+                Log::info('No image path provided, proceeding to delete car with ID: ' . $this->carId);
+            }
+
+            $car->delete();
+            $this->dispatch('refreshComponent', $car);
+        } catch (Exception $e) {
+            Log::error('Error deleting car or image: ' . $e->getMessage());
         }
-        $car->delete();
-        $this->dispatch('refreshComponent', $car);
     }
     public function render()
     {

@@ -17,3 +17,7 @@ body {
         padding: 20px;
     }
 }
+
+.prose {
+    padding: 0px !important;
+}

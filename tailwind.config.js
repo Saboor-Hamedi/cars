@@ -18,6 +18,7 @@ export default {
             colors: {
                 purple: '#c13584'
             },
+
         },
     },
 
