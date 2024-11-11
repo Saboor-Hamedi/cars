@@ -39,4 +39,5 @@
             {{ $cars->links() }}
         </div>
     </div>
+
 </div>

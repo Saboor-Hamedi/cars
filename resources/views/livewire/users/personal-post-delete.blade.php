@@ -5,6 +5,5 @@
             @if ($isDelete) disabled @endif>
             <span wire:loading.remove>Deleting</span>
             <span wire:loading>Deleting...</span>
-            {{-- <span wire:loading wire:target="delete" class="text-xs text-red-500">Deleting...</span> --}}
     </div>
 </div>

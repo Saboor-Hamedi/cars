@@ -7,6 +7,7 @@ use App\Models\Profile;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -35,7 +36,7 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
 
         ]);
-        Car::factory(50000)->create();
+        Car::factory(1)->create();
         Profile::factory(1)->create();
     }
 }

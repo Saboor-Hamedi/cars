@@ -4,6 +4,7 @@ namespace App\Livewire\Users;
 
 use App\Models\Car;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
 class PersonalPostDelete extends Component
@@ -22,6 +23,10 @@ class PersonalPostDelete extends Component
         $this->isDelete = true;
         $car = Car::findOrFail($this->carId);
         $this->authorize('delete', $car);
+        $imagePath = 'car_pics/' . $car->image;
+        if (Storage::disk('public')->exists($imagePath)) {
+            Storage::disk('public')->delete($imagePath);
+        }
         $car->delete();
         $this->dispatch('refreshComponent', $car);
     }
